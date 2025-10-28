@@ -137,7 +137,7 @@
       "La capital es Santo Domingo.",
       "La moneda es el peso dominicano.",
       "Un producto importante es el cacao.",
-      "La capital (Santo Domingo) es la ciudad más antigua de América.",
+      "La capital es la ciudad más antigua de América.",
       "Punta Cana es un lugar de interés turístico.",
       "El merengue y la bachata son bailes típicos.",
       "Está en una isla (La Española)."
@@ -151,8 +151,7 @@
       "La capital es Caracas.",
       "La moneda es el bolívar.",
       "Un producto importante es el petróleo.",
-      "Hay una catarata muy famosa: el Salto Ángel.",
-      "El Salto Ángel es la catarata más alta del mundo.",
+      "En este país está El Salto Ángel, la catarata más alta del mundo.",
       "Un plato típico son las arepas.",
       "El Parque Nacional Canaima es un lugar de interés turístico."
     ]
@@ -207,7 +206,7 @@
       "La moneda es el boliviano.",
       "Hay un desierto de sal muy grande (Salar de Uyuni).",
       "Un producto importante es el litio.",
-      "Hay dos lenguas oficiales: quechua y aimara."
+      "Hay 37 lenguas oficiales como el español, el quechua y el aimara."
     ]
   },
   {
@@ -220,8 +219,7 @@
       "Es un país muy largo y estrecho.",
       "Hay un desierto muy árido: el Desierto de Atacama.",
       "La Isla de Pascua está en este país.",
-      "Un producto importante es el cobre.",
-      "Un producto importante es el vino."
+      "Dos productos importantes son el cobre y el vino."
     ]
   },
   {
@@ -235,7 +233,6 @@
       "Hay unas cataratas famosas: las Cataratas del Iguazú.",
       "La montaña más alta de América está aquí (Aconcagua).",
       "Un producto importante es la carne de res.",
-      "Un producto importante es el vino.",
       "La Patagonia es una región famosa en el sur."
     ]
   },
@@ -262,7 +259,6 @@
       "La moneda es el guaraní.",
       "Hay dos lenguas oficiales: español y guaraní.",
       "No tiene costa.",
-      "Hay una represa hidroeléctrica muy grande (Itaipú).",
       "Un producto importante es la soja."
     ]
   },
@@ -312,9 +308,9 @@
       "PISTA: Bandera",
       "La capital es Brasilia.",
       "La lengua oficial es el portugués.",
-      "La moneda es el real brasileño.",
+      "La moneda es el real.",
       "Es el país más grande de Sudamérica.",
-      "Hay una selva tropical muy grande (Amazonas)."
+      "Hay una selva tropical muy grande."
     ]
   },
   {
@@ -325,7 +321,6 @@
       "La capital es Londres.",
       "La lengua oficial es el inglés.",
       "La moneda es la libra esterlina.",
-      "Es un archipiélago de islas.",
       "Está en el noroeste de Europa.",
       "Está al noroeste de Francia."
     ]
@@ -337,8 +332,6 @@
       "PISTA: Bandera",
       "La capital es París.",
       "La lengua oficial es el francés.",
-      "La moneda es el euro.",
-      "Está en Europa Occidental.",
       "Está al norte de España.",
       "Un lugar de interés turístico es la Torre Eiffel."
     ]
@@ -350,7 +343,6 @@
       "PISTA: Bandera",
       "La capital es Berlín.",
       "La lengua oficial es el alemán.",
-      "La moneda es el euro.",
       "Está en Europa Central.",
       "Está al este de Francia y al oeste de Polonia."
     ]
@@ -362,9 +354,8 @@
       "PISTA: Bandera",
       "La capital es Roma.",
       "La lengua oficial es el italiano.",
-      "La moneda es el euro.",
       "Es una península.",
-      "Tiene forma de bota.",
+      "Tiene forma de bota👢.",
       "Está en el Mar Mediterráneo.",
       "Un plato típico es la pasta."
     ]
@@ -376,7 +367,7 @@
       "PISTA: Bandera",
       "La capital es Moscú.",
       "La lengua oficial es el ruso.",
-      "La moneda es el rublo ruso.",
+      "La moneda es el rublo.",
       "Es el país más grande del mundo.",
       "Está en Europa del Este y el norte de Asia.",
       "En invierno hace mucho frío."
@@ -391,7 +382,7 @@
       "La lengua oficial es el chino mandarín.",
       "La moneda es el yuan.",
       "Está en Asia Oriental.",
-      "Es el país con más población del mundo.",
+      "Es el segundo país con más población del mundo.",
       "La Gran Muralla es un lugar de interés turístico."
     ]
   },
@@ -403,7 +394,6 @@
       "La capital es Tokio.",
       "La lengua oficial es el japonés.",
       "La moneda es el yen.",
-      "Es un archipiélago de islas.",
       "Está en Asia Oriental.",
       "Está al este de China."
     ]
@@ -414,8 +404,8 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Nueva Delhi.",
-      "Las lenguas oficiales son el hindi y el inglés.",
-      "La moneda es la rupia india.",
+      "Las lenguas oficiales más importantes son el hindi y el inglés.",
+      "La moneda es la rupia.",
       "Está en el sur de Asia.",
       "Es una península grande en el Océano Índico.",
       "El Taj Mahal es un lugar de interés turístico."
@@ -432,17 +422,6 @@
       "Es un país y un continente.",
       "Está en Oceanía.",
       "Hay un desierto grande en el interior."
-    ]
-  },
-  {
-    "ISO_A3": "ZAF",
-    "ISO_A2": "za",
-    "clues_es": [
-      "PISTA: Bandera",
-      "La capital es Pretoria.",
-      "Tiene 11 lenguas oficiales.",
-      "La moneda es el rand.",
-      "Está en el sur de África."
     ]
   },
   {
@@ -502,7 +481,7 @@
       "La capital es Abuya.",
       "La lengua oficial es el inglés.",
       "La moneda es el naira.",
-      "Está en África Occidental.",
+      "Está en África Occidental, al este de Camerún.",
       "Es el país con más población de África."
     ]
   },
@@ -539,8 +518,8 @@
       "La capital es Ámsterdam.",
       "La lengua oficial es el neerlandés (holandés).",
       "La moneda es el euro.",
-      "Está en el noroeste de Europa.",
-      "Es famoso por sus canales y molinos de viento."
+      "Está al norte de Francia y Alemania.",
+      "Es famoso por sus canales y molinos de viento y tulipanes🥀."
     ]
   },
   {
@@ -587,7 +566,6 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Helsinki.",
-      "La moneda es el euro.",
       "Las lenguas oficiales son el finlandés y el sueco.",
       "Está en el norte de Europa.",
       "Hay miles de lagos en su territorio."
@@ -599,7 +577,6 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Dublín.",
-      "La moneda es el euro.",
       "Las lenguas oficiales son el irlandés y el inglés.",
       "Es una isla en Europa Occidental.",
       "Está al oeste de Reino Unido."
@@ -611,7 +588,6 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Lisboa.",
-      "La moneda es el euro.",
       "La lengua oficial es el portugués.",
       "Está en la Península Ibérica.",
       "Está al oeste de España.",
@@ -624,7 +600,6 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Atenas.",
-      "La moneda es el euro.",
       "La lengua oficial es el griego.",
       "Está en el sureste de Europa.",
       "Es una península y tiene muchas islas."
@@ -638,7 +613,6 @@
       "La capital es Varsovia.",
       "La moneda es el złoty.",
       "La lengua oficial es el polaco.",
-      "Está en Europa Central.",
       "Está al este de Alemania."
     ]
   },
@@ -648,7 +622,6 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Viena.",
-      "La moneda es el euro.",
       "La lengua oficial es el alemán.",
       "Está en Europa Central.",
       "No tiene costa.",
@@ -661,22 +634,9 @@
     "clues_es": [
       "PISTA: Bandera",
       "La capital es Bruselas.",
-      "La moneda es el euro.",
       "Tiene tres lenguas oficiales (neerlandés, francés, alemán).",
       "Está en Europa Occidental.",
       "Está al norte de Francia."
-    ]
-  },
-  {
-    "ISO_A3": "SGP",
-    "ISO_A2": "sg",
-    "clues_es": [
-      "PISTA: Bandera",
-      "La capital es Singapur.",
-      "La moneda es el dólar de Singapur.",
-      "Tiene cuatro lenguas oficiales.",
-      "Es una isla y ciudad-estado.",
-      "Está en el Sudeste Asiático."
     ]
   },
   {
@@ -711,7 +671,7 @@
       "La capital es Bangkok.",
       "La moneda es el baht.",
       "La lengua oficial es el tailandés.",
-      "Está en el Sudeste Asiático.",
+      "Está en al este de Myanmar, en el Sudeste Asiático.",
       "Es famoso por sus templos y playas."
     ]
   },
@@ -723,7 +683,7 @@
       "La capital es Hanói.",
       "La moneda es el đồng.",
       "La lengua oficial es el vietnamita.",
-      "Está en el Sudeste Asiático.",
+      "Está en el Sudeste Asiático, al este de Camboya y al sur de China.",
       "Tiene una costa muy larga."
     ]
   },
@@ -772,7 +732,7 @@
       "La capital es Nairobi.",
       "La moneda es el chelín keniano.",
       "Las lenguas oficiales son el suajili y el inglés.",
-      "Está en África Oriental.",
+      "Está en África Oriental, al sur de Etiopia y al norte de Tanzania.",
       "Es famoso por sus parques nacionales y sabanas."
     ]
   },
