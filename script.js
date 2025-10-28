@@ -375,7 +375,7 @@ async function handleCountryClick(polygon, event, coords) {
 }
 
 function penalizeIncorrectAttempt() {
-    currentRoundPoints = Math.max(20, currentRoundPoints - 15);
+    currentRoundPoints = Math.max(20, currentRoundPoints - 5);
     document.getElementById('round-score').textContent = currentRoundPoints;
 }
 
@@ -609,7 +609,7 @@ function loadNewGame() {
 
     const button = document.getElementById('next-clue-btn');
     button.disabled = false;
-    button.textContent = 'Pedir Pista (coste: -15%)';
+    button.textContent = 'Pedir Pista (coste: -5%)';
 
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = false;
