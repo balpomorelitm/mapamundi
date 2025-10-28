@@ -298,7 +298,7 @@ async function handleCountryClick(polygon, event, coords) {
 }
 
 function penalizeIncorrectAttempt() {
-    currentRoundPoints = Math.max(0, currentRoundPoints - 15);
+    currentRoundPoints = Math.max(20, currentRoundPoints - 15);
     document.getElementById('round-score').textContent = currentRoundPoints;
 }
 
@@ -367,18 +367,20 @@ function startRoundTimer() {
     stopRoundTimer(); // Clear any old timer
 
     roundTimer = setInterval(() => {
-        if (targetCountry && currentRoundPoints > 0) {
+        if (targetCountry && currentRoundPoints > 20) {
             currentRoundPoints -= 1; // Subtract 1 point
 
-            if (currentRoundPoints < 0) {
-                currentRoundPoints = 0;
+            if (currentRoundPoints < 20) {
+                currentRoundPoints = 20;
             }
 
             document.getElementById('round-score').textContent = currentRoundPoints;
 
-            if (currentRoundPoints === 0) {
-                stopRoundTimer(); // Stop the timer if points run out
+            if (currentRoundPoints === 20) {
+                stopRoundTimer(); // Stop the timer if points reach the minimum
             }
+        } else if (targetCountry && currentRoundPoints === 20) {
+            stopRoundTimer(); // Stop if we've already reached the minimum
         } else {
             stopRoundTimer(); // Stop if no target (safety check)
         }
@@ -472,7 +474,7 @@ function showNextClue() {
     if (!targetCountry || clueIndex >= currentClues.length) return;
 
     if (clueIndex > 0) {
-        currentRoundPoints = Math.round(currentRoundPoints * 0.85);
+        currentRoundPoints = Math.max(20, Math.round(currentRoundPoints * 0.85));
     }
 
     document.getElementById('round-score').textContent = currentRoundPoints;
