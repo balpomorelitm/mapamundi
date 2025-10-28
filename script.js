@@ -204,8 +204,8 @@ function handleSkip() {
     );
 
     if (targetPolygon) {
-        const { lat, lon } = globe.polygonCentroid(targetPolygon);
-        globe.pointOfView({ lat: lat, lng: lon, altitude: 1.5 }, 1000);
+        const { lat, lng } = globe.polygonCentroid(targetPolygon);
+        globe.pointOfView({ lat, lng, altitude: 1.5 }, 1000);
         // We don't need highlightCountry(targetPolygon) because the color is already set
     }
 
