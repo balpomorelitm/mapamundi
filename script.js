@@ -1,8 +1,90 @@
+// Configuración de Supabase
+const SUPABASE_URL = 'https://ayyafokliqskiaftcwuo.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5eWFmb2tsaXFza2lhZnRjd3VvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2NjY1OTcsImV4cCI6MjA3NzI0MjU5N30._H90m2Mvh6nSPSljUopNiQ2Yq7xB55osA_6KrVVaGLs';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 let globe;
 let targetCountry = null;
 let score = 0;
 let countriesData = [];
 let geoJsonData = null;
+
+// Guardar nuevo record
+async function saveScore(playerName, scoreValue) {
+    if (!supabase) {
+        console.error('Supabase no está inicializado');
+        return false;
+    }
+
+    const { error } = await supabase
+        .from('leaderboard')
+        .insert([{ player_name: playerName, score: scoreValue }]);
+
+    if (error) {
+        console.error('Error guardando puntuación:', error);
+        showMessage('No se pudo guardar la puntuación. Inténtalo más tarde.', false);
+        return false;
+    }
+    return true;
+}
+
+// Obtener top 10 records
+async function getLeaderboard() {
+    if (!supabase) {
+        console.error('Supabase no está inicializado');
+        return [];
+    }
+
+    const { data, error } = await supabase
+        .from('leaderboard')
+        .select('*')
+        .order('score', { ascending: false })
+        .limit(10);
+
+    if (error) {
+        console.error('Error cargando leaderboard:', error);
+        showMessage('No se pudo cargar el ranking.', false);
+        return [];
+    }
+    return data || [];
+}
+
+// Mostrar leaderboard en HTML
+async function displayLeaderboard() {
+    const leaderboardList = document.getElementById('leaderboard-list');
+    if (!leaderboardList) return;
+
+    const records = await getLeaderboard();
+
+    if (!records.length) {
+        leaderboardList.innerHTML = '<p>No hay puntuaciones registradas todavía.</p>';
+        return;
+    }
+
+    const leaderboardHTML = records.map((record, index) =>
+        `<div class="record-item">
+            <span class="rank">${index + 1}</span>
+            <span class="name">${record.player_name}</span>
+            <span class="score">${record.score}</span>
+        </div>`
+    ).join('');
+
+    leaderboardList.innerHTML = leaderboardHTML;
+}
+
+// Mostrar/ocultar leaderboard
+function toggleLeaderboard() {
+    const leaderboard = document.getElementById('leaderboard');
+    if (!leaderboard) return;
+    leaderboard.style.display = 'none';
+}
+
+async function showLeaderboardPanel() {
+    const leaderboard = document.getElementById('leaderboard');
+    if (!leaderboard) return;
+    await displayLeaderboard();
+    leaderboard.style.display = 'block';
+}
 
 function normalizeISO3(value) {
     if (value === undefined || value === null) return null;
@@ -487,6 +569,8 @@ function handleNewGameClick() {
     // 5. Ensure clue box is visible (if game was completed)
     document.getElementById('clue-box').style.display = 'block';
 
+    toggleLeaderboard();
+
     // 6. Start the first round
     loadNewGame();
 }
@@ -579,7 +663,7 @@ function showNextClue() {
     }
 }
 
-function loadNewGame() {
+async function loadNewGame() {
     stopRoundTimer();
 
     recentlyRevealedISO = null;
@@ -593,8 +677,21 @@ function loadNewGame() {
     // 2. Check for GAME OVER
     if (availableCountries.length === 0) {
         if (countriesData.length > 0) { // Check that game loaded at least once
-            showMessage('¡Juego completado! Has adivinado todos los países.', true);
+            const playerName = prompt(`¡Juego completado! Puntuación final: ${score}\nIngresa tu nombre para el ranking:`);
+
+            if (playerName && playerName.trim()) {
+                const saved = await saveScore(playerName.trim(), score);
+                if (saved) {
+                    showMessage('¡Puntuación guardada! Revisa el ranking.', true);
+                }
+            }
+
             document.getElementById('clue-box').style.display = 'none';
+            await displayLeaderboard();
+            const leaderboard = document.getElementById('leaderboard');
+            if (leaderboard) {
+                leaderboard.style.display = 'block';
+            }
         }
         return; // Stop the game
     }
