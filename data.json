@@ -1,0 +1,502 @@
+[
+  {
+    "ISO_A3": "ESP",
+    "capital_es": "Madrid",
+    "fact_es": "Su moneda es el euro y es famoso por la paella."
+  },
+  {
+    "ISO_A3": "ESP",
+    "capital_es": "Madrid",
+    "fact_es": "Tiene dos idiomas cooficiales: catalán, gallego, euskera y español."
+  },
+  {
+    "ISO_A3": "ESP",
+    "capital_es": "Madrid",
+    "fact_es": "La Sagrada Familia en Barcelona es su lugar turístico más visitado."
+  },
+  {
+    "ISO_A3": "ESP",
+    "capital_es": "Madrid",
+    "fact_es": "Produce aceite de oliva y vino de alta calidad."
+  },
+  {
+    "ISO_A3": "ESP",
+    "capital_es": "Madrid",
+    "fact_es": "Tiene clima mediterráneo en la costa y continental en el interior."
+  },
+  {
+    "ISO_A3": "MEX",
+    "capital_es": "Ciudad de México",
+    "fact_es": "Su moneda es el peso mexicano y es famoso por los tacos."
+  },
+  {
+    "ISO_A3": "MEX",
+    "capital_es": "Ciudad de México",
+    "fact_es": "Es el país hispanohablante con más población del mundo."
+  },
+  {
+    "ISO_A3": "MEX",
+    "capital_es": "Ciudad de México",
+    "fact_es": "El volcán Popocatépetl es uno de sus volcanes más famosos."
+  },
+  {
+    "ISO_A3": "MEX",
+    "capital_es": "Ciudad de México",
+    "fact_es": "Chichén Itzá es una de las maravillas del mundo moderno."
+  },
+  {
+    "ISO_A3": "MEX",
+    "capital_es": "Ciudad de México",
+    "fact_es": "Produce aguacate, tequila y chocolate."
+  },
+  {
+    "ISO_A3": "GTM",
+    "capital_es": "Ciudad de Guatemala",
+    "fact_es": "Su moneda es el quetzal, como el ave nacional."
+  },
+  {
+    "ISO_A3": "GTM",
+    "capital_es": "Ciudad de Guatemala",
+    "fact_es": "Tiene más de 20 lenguas indígenas además del español."
+  },
+  {
+    "ISO_A3": "GTM",
+    "capital_es": "Ciudad de Guatemala",
+    "fact_es": "Tikal es una antigua ciudad maya muy famosa."
+  },
+  {
+    "ISO_A3": "GTM",
+    "capital_es": "Ciudad de Guatemala",
+    "fact_es": "El Lago de Atitlán es uno de los lagos más bellos del mundo."
+  },
+  {
+    "ISO_A3": "GTM",
+    "capital_es": "Ciudad de Guatemala",
+    "fact_es": "Produce café de alta calidad para exportar."
+  },
+  {
+    "ISO_A3": "HND",
+    "capital_es": "Tegucigalpa",
+    "fact_es": "Su moneda es la lempira y produce café y bananos."
+  },
+  {
+    "ISO_A3": "HND",
+    "capital_es": "Tegucigalpa",
+    "fact_es": "Las ruinas mayas de Copán son patrimonio de la humanidad."
+  },
+  {
+    "ISO_A3": "HND",
+    "capital_es": "Tegucigalpa",
+    "fact_es": "Tiene hermosas playas en el Caribe como Roatán."
+  },
+  {
+    "ISO_A3": "HND",
+    "capital_es": "Tegucigalpa",
+    "fact_es": "El clima es tropical en las costas."
+  },
+  {
+    "ISO_A3": "HND",
+    "capital_es": "Tegucigalpa",
+    "fact_es": "El río Patuca es el más largo del país."
+  },
+  {
+    "ISO_A3": "SLV",
+    "capital_es": "San Salvador",
+    "fact_es": "Usa el dólar estadounidense como moneda oficial."
+  },
+  {
+    "ISO_A3": "SLV",
+    "capital_es": "San Salvador",
+    "fact_es": "Es el país más pequeño de Centroamérica."
+  },
+  {
+    "ISO_A3": "SLV",
+    "capital_es": "San Salvador",
+    "fact_es": "El volcán de Izalco se llama el faro del Pacífico."
+  },
+  {
+    "ISO_A3": "SLV",
+    "capital_es": "San Salvador",
+    "fact_es": "Las pupusas son su comida tradicional más famosa."
+  },
+  {
+    "ISO_A3": "SLV",
+    "capital_es": "San Salvador",
+    "fact_es": "Produce café y azúcar para exportar."
+  },
+  {
+    "ISO_A3": "NIC",
+    "capital_es": "Managua",
+    "fact_es": "Su moneda es el córdoba y produce café y tabaco."
+  },
+  {
+    "ISO_A3": "NIC",
+    "capital_es": "Managua",
+    "fact_es": "El Lago de Nicaragua es el lago más grande de Centroamérica."
+  },
+  {
+    "ISO_A3": "NIC",
+    "capital_es": "Managua",
+    "fact_es": "Tiene muchos volcanes activos como el Masaya."
+  },
+  {
+    "ISO_A3": "NIC",
+    "capital_es": "Managua",
+    "fact_es": "La ciudad colonial de Granada es muy turística."
+  },
+  {
+    "ISO_A3": "NIC",
+    "capital_es": "Managua",
+    "fact_es": "Es conocido como la tierra de lagos y volcanes."
+  },
+  {
+    "ISO_A3": "CRI",
+    "capital_es": "San José",
+    "fact_es": "Su moneda es el colón y no tiene ejército desde 1948."
+  },
+  {
+    "ISO_A3": "CRI",
+    "capital_es": "San José",
+    "fact_es": "Es líder mundial en turismo ecológico y sostenible."
+  },
+  {
+    "ISO_A3": "CRI",
+    "capital_es": "San José",
+    "fact_es": "El Parque Nacional Volcán Arenal es muy visitado."
+  },
+  {
+    "ISO_A3": "CRI",
+    "capital_es": "San José",
+    "fact_es": "Produce piña, café y banano de exportación."
+  },
+  {
+    "ISO_A3": "CRI",
+    "capital_es": "San José",
+    "fact_es": "Tiene costas en el Océano Pacífico y el Mar Caribe."
+  },
+  {
+    "ISO_A3": "PAN",
+    "capital_es": "Ciudad de Panamá",
+    "fact_es": "Su moneda es el balboa y el dólar estadounidense."
+  },
+  {
+    "ISO_A3": "PAN",
+    "capital_es": "Ciudad de Panamá",
+    "fact_es": "El Canal de Panamá conecta el océano Atlántico y Pacífico."
+  },
+  {
+    "ISO_A3": "PAN",
+    "capital_es": "Ciudad de Panamá",
+    "fact_es": "Se puede ver el amanecer en un océano y el atardecer en otro."
+  },
+  {
+    "ISO_A3": "PAN",
+    "capital_es": "Ciudad de Panamá",
+    "fact_es": "El Casco Viejo es patrimonio de la humanidad."
+  },
+  {
+    "ISO_A3": "PAN",
+    "capital_es": "Ciudad de Panamá",
+    "fact_es": "Exporta banano, café y productos del mar."
+  },
+  {
+    "ISO_A3": "CUB",
+    "capital_es": "La Habana",
+    "fact_es": "Su moneda es el peso cubano y produce tabaco y ron."
+  },
+  {
+    "ISO_A3": "CUB",
+    "capital_es": "La Habana",
+    "fact_es": "Los puros cubanos son famosos en todo el mundo."
+  },
+  {
+    "ISO_A3": "CUB",
+    "capital_es": "La Habana",
+    "fact_es": "Es la isla más grande del Caribe."
+  },
+  {
+    "ISO_A3": "CUB",
+    "capital_es": "La Habana",
+    "fact_es": "El Valle de Viñales tiene paisajes espectaculares."
+  },
+  {
+    "ISO_A3": "CUB",
+    "capital_es": "La Habana",
+    "fact_es": "Tiene playas hermosas de arena blanca y clima tropical."
+  },
+  {
+    "ISO_A3": "DOM",
+    "capital_es": "Santo Domingo",
+    "fact_es": "Su moneda es el peso dominicano y produce cacao."
+  },
+  {
+    "ISO_A3": "DOM",
+    "capital_es": "Santo Domingo",
+    "fact_es": "Santo Domingo es la ciudad más antigua de América."
+  },
+  {
+    "ISO_A3": "DOM",
+    "capital_es": "Santo Domingo",
+    "fact_es": "Punta Cana es uno de los destinos turísticos más populares."
+  },
+  {
+    "ISO_A3": "DOM",
+    "capital_es": "Santo Domingo",
+    "fact_es": "El merengue y la bachata son bailes tradicionales del país."
+  },
+  {
+    "ISO_A3": "DOM",
+    "capital_es": "Santo Domingo",
+    "fact_es": "Comparte la isla La Española con Haití."
+  },
+  {
+    "ISO_A3": "VEN",
+    "capital_es": "Caracas",
+    "fact_es": "Su moneda es el bolívar y tiene las mayores reservas de petróleo."
+  },
+  {
+    "ISO_A3": "VEN",
+    "capital_es": "Caracas",
+    "fact_es": "El Salto Ángel es la cascada más alta del mundo."
+  },
+  {
+    "ISO_A3": "VEN",
+    "capital_es": "Caracas",
+    "fact_es": "El Relámpago del Catatumbo es un fenómeno único en el mundo."
+  },
+  {
+    "ISO_A3": "VEN",
+    "capital_es": "Caracas",
+    "fact_es": "Las arepas son su comida tradicional más popular."
+  },
+  {
+    "ISO_A3": "VEN",
+    "capital_es": "Caracas",
+    "fact_es": "El Parque Nacional Canaima es patrimonio de la humanidad."
+  },
+  {
+    "ISO_A3": "COL",
+    "capital_es": "Bogotá",
+    "fact_es": "Su moneda es el peso colombiano y produce café de calidad."
+  },
+  {
+    "ISO_A3": "COL",
+    "capital_es": "Bogotá",
+    "fact_es": "Es el único país sudamericano con costas en dos océanos."
+  },
+  {
+    "ISO_A3": "COL",
+    "capital_es": "Bogotá",
+    "fact_es": "Cartagena de Indias es una ciudad colonial muy turística."
+  },
+  {
+    "ISO_A3": "COL",
+    "capital_es": "Bogotá",
+    "fact_es": "Produce esmeraldas, flores y banano para exportar."
+  },
+  {
+    "ISO_A3": "COL",
+    "capital_es": "Bogotá",
+    "fact_es": "El río Magdalena es el más importante del país."
+  },
+  {
+    "ISO_A3": "ECU",
+    "capital_es": "Quito",
+    "fact_es": "Su moneda es el dólar estadounidense y exporta banano."
+  },
+  {
+    "ISO_A3": "ECU",
+    "capital_es": "Quito",
+    "fact_es": "Las Islas Galápagos son famosas por su biodiversidad única."
+  },
+  {
+    "ISO_A3": "ECU",
+    "capital_es": "Quito",
+    "fact_es": "Fue el primer país en dar derechos constitucionales a la naturaleza."
+  },
+  {
+    "ISO_A3": "ECU",
+    "capital_es": "Quito",
+    "fact_es": "La línea del ecuador cruza el país, de ahí su nombre."
+  },
+  {
+    "ISO_A3": "ECU",
+    "capital_es": "Quito",
+    "fact_es": "El volcán Cotopaxi es uno de los volcanes activos más altos."
+  },
+  {
+    "ISO_A3": "PER",
+    "capital_es": "Lima",
+    "fact_es": "Su moneda es el sol y es famoso por Machu Picchu."
+  },
+  {
+    "ISO_A3": "PER",
+    "capital_es": "Lima",
+    "fact_es": "La ciudadela inca de Machu Picchu es maravilla del mundo."
+  },
+  {
+    "ISO_A3": "PER",
+    "capital_es": "Lima",
+    "fact_es": "El Lago Titicaca es el lago navegable más alto del mundo."
+  },
+  {
+    "ISO_A3": "PER",
+    "capital_es": "Lima",
+    "fact_es": "El ceviche es su plato nacional más conocido."
+  },
+  {
+    "ISO_A3": "PER",
+    "capital_es": "Lima",
+    "fact_es": "Tiene tres regiones: costa, sierra y selva amazónica."
+  },
+  {
+    "ISO_A3": "BOL",
+    "capital_es": "Sucre",
+    "fact_es": "Su moneda es el boliviano y tiene dos capitales oficiales."
+  },
+  {
+    "ISO_A3": "BOL",
+    "capital_es": "Sucre",
+    "fact_es": "El Salar de Uyuni es el desierto de sal más grande del mundo."
+  },
+  {
+    "ISO_A3": "BOL",
+    "capital_es": "Sucre",
+    "fact_es": "Es el país más plano de la Tierra según estudios."
+  },
+  {
+    "ISO_A3": "BOL",
+    "capital_es": "Sucre",
+    "fact_es": "Tiene las mayores reservas de litio del mundo."
+  },
+  {
+    "ISO_A3": "BOL",
+    "capital_es": "Sucre",
+    "fact_es": "El quechua y el aimara son idiomas oficiales además del español."
+  },
+  {
+    "ISO_A3": "CHL",
+    "capital_es": "Santiago",
+    "fact_es": "Su moneda es el peso chileno y es el país más largo del mundo."
+  },
+  {
+    "ISO_A3": "CHL",
+    "capital_es": "Santiago",
+    "fact_es": "El desierto de Atacama es el más árido del planeta."
+  },
+  {
+    "ISO_A3": "CHL",
+    "capital_es": "Santiago",
+    "fact_es": "La Isla de Pascua y sus moais son un gran misterio."
+  },
+  {
+    "ISO_A3": "CHL",
+    "capital_es": "Santiago",
+    "fact_es": "Produce cobre, vino y salmón para exportar."
+  },
+  {
+    "ISO_A3": "CHL",
+    "capital_es": "Santiago",
+    "fact_es": "Tiene glaciares, desiertos, bosques y playas en su territorio."
+  },
+  {
+    "ISO_A3": "ARG",
+    "capital_es": "Buenos Aires",
+    "fact_es": "Su moneda es el peso argentino y es famoso por el tango."
+  },
+  {
+    "ISO_A3": "ARG",
+    "capital_es": "Buenos Aires",
+    "fact_es": "Las Cataratas del Iguazú son una de las más impresionantes del mundo."
+  },
+  {
+    "ISO_A3": "ARG",
+    "capital_es": "Buenos Aires",
+    "fact_es": "El Aconcagua es la montaña más alta de América."
+  },
+  {
+    "ISO_A3": "ARG",
+    "capital_es": "Buenos Aires",
+    "fact_es": "Produce carne de res, vino y soja de calidad mundial."
+  },
+  {
+    "ISO_A3": "ARG",
+    "capital_es": "Buenos Aires",
+    "fact_es": "La Patagonia argentina tiene glaciares y paisajes espectaculares."
+  },
+  {
+    "ISO_A3": "URY",
+    "capital_es": "Montevideo",
+    "fact_es": "Su moneda es el peso uruguayo y produce carne y lana."
+  },
+  {
+    "ISO_A3": "URY",
+    "capital_es": "Montevideo",
+    "fact_es": "Punta del Este es un destino turístico famoso de playas."
+  },
+  {
+    "ISO_A3": "URY",
+    "capital_es": "Montevideo",
+    "fact_es": "Fue sede del primer Mundial de Fútbol en 1930."
+  },
+  {
+    "ISO_A3": "URY",
+    "capital_es": "Montevideo",
+    "fact_es": "El río Uruguay separa el país de Argentina."
+  },
+  {
+    "ISO_A3": "URY",
+    "capital_es": "Montevideo",
+    "fact_es": "Tiene un clima templado con las cuatro estaciones."
+  },
+  {
+    "ISO_A3": "PRY",
+    "capital_es": "Asunción",
+    "fact_es": "Su moneda es el guaraní y tiene dos idiomas oficiales."
+  },
+  {
+    "ISO_A3": "PRY",
+    "capital_es": "Asunción",
+    "fact_es": "El español y el guaraní son idiomas oficiales del país."
+  },
+  {
+    "ISO_A3": "PRY",
+    "capital_es": "Asunción",
+    "fact_es": "Es un país sin costa marítima en el centro de Sudamérica."
+  },
+  {
+    "ISO_A3": "PRY",
+    "capital_es": "Asunción",
+    "fact_es": "Las represas de Itaipú generan mucha energía hidroeléctrica."
+  },
+  {
+    "ISO_A3": "PRY",
+    "capital_es": "Asunción",
+    "fact_es": "Produce soja, carne y algodón para exportar."
+  },
+  {
+    "ISO_A3": "GNQ",
+    "capital_es": "Malabo",
+    "fact_es": "Su moneda es el franco CFA y está en África Central."
+  },
+  {
+    "ISO_A3": "GNQ",
+    "capital_es": "Malabo",
+    "fact_es": "Es el único país africano donde el español es idioma oficial."
+  },
+  {
+    "ISO_A3": "GNQ",
+    "capital_es": "Malabo",
+    "fact_es": "Produce petróleo y cacao para exportar."
+  },
+  {
+    "ISO_A3": "GNQ",
+    "capital_es": "Malabo",
+    "fact_es": "Tiene una parte continental e islas en el Golfo de Guinea."
+  },
+  {
+    "ISO_A3": "GNQ",
+    "capital_es": "Malabo",
+    "fact_es": "Tiene clima tropical ecuatorial con mucha lluvia."
+  }
+]
