@@ -242,7 +242,7 @@ function showNextClue() {
 
     if (clueText === "PISTA: Bandera" && targetCountry.ISO_A2) {
         const iso_a2 = targetCountry.ISO_A2;
-        li.innerHTML = `Pista: <span class="fi fi-${iso_a2} clue-flag"></span>`;
+        li.innerHTML = `La bandera es... <span class="fi fi-${iso_a2} clue-flag"></span>`;
     } else {
         li.textContent = clueText;
     }
