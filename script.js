@@ -187,9 +187,10 @@ async function initGlobe() {
     document.getElementById('new-game-btn').addEventListener('click', handleNewGameClick);
 
     globe = Globe()
+        // Fondo transparente para mostrar las estrellas
+        .backgroundColor('rgba(0,0,0,0)')
         // Texturas más ligeras o color sólido
         .globeImageUrl(null)
-        // .backgroundColor('rgba(0,0,0,0.8)') // Fondo simple sin estrellas
         .showAtmosphere(false) // Desactivar atmósfera para mejor rendimiento
         .polygonsData(geoJsonData.features)
         .polygonAltitude(0.01) // Elevación mínima (MÁS RÁPIDO)
