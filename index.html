@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza de Países en 3D</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loading">Cargando el globo...</div>
+    <div id="globeViz"></div>
+    
+    <div id="clue-box" style="display: none;">
+        <h2>🌍 Adivina el País</h2>
+        <p><span class="label">Capital:</span> <span id="capital"></span></p>
+        <p><span class="label">Dato curioso:</span> <span id="fact"></span></p>
+    </div>
+    
+    <div id="score-box" style="display: none;">
+        <h3>Puntuación</h3>
+        <div id="score">0</div>
+    </div>
+    
+    <div id="message" class="message"></div>
+
+    <!-- Globe.gl library -->
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.31.0/dist/globe.gl.min.js"></script>
+    <!-- Tu archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
