@@ -173,32 +173,45 @@ body {
 .message {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: var(--glass-bg);
-    backdrop-filter: blur(25px) saturate(200%);
-    border: 2px solid var(--glass-border);
-    border-radius: 25px;
-    padding: 40px 60px;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 700;
-    z-index: 1000;
+    right: 30px;
+    transform: translateY(-50%);
+    max-width: 320px;
+    min-width: 240px;
+    padding: 18px 22px;
+    border-radius: 14px;
     display: none;
+    text-align: left;
+    line-height: 1.2;
+    word-break: break-word;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     box-shadow: var(--shadow-xl);
-    animation: messagePopIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    z-index: 1000;
+    animation: messagePopIn 0.32s cubic-bezier(0.68,-0.55,0.265,1.55) forwards;
+    pointer-events: none;
 }
 
 .message.correct {
     color: var(--success-color);
     border-color: var(--success-color);
-    box-shadow: var(--shadow-xl), 0 0 50px rgba(0, 230, 118, 0.4);
+    box-shadow: var(--shadow-xl), 0 0 28px rgba(0, 230, 118, 0.35);
 }
 
 .message.incorrect {
     color: var(--error-color);
     border-color: var(--error-color);
-    box-shadow: var(--shadow-xl), 0 0 50px rgba(255, 87, 34, 0.4);
+    box-shadow: var(--shadow-xl), 0 0 28px rgba(255, 87, 34, 0.35);
+}
+
+@media (max-width: 768px) {
+  .message {
+    right: 14px;
+    max-width: 260px;
+    min-width: 200px;
+    font-size: 15px;
+  }
 }
 
 #loading {

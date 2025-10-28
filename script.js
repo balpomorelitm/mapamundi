@@ -10,6 +10,40 @@ let completedCountries = new Set(); // ISO codes of countries already guessed
 let lastSkippedISO = null; // ISO code of the most recently skipped country
 let recentlyRevealedISO = null; // ISO code temporarily highlighted after revealing
 
+async function getFlagCenterColorHex(iso2) {
+    if (!iso2) return '#4CAF50';
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = `https://cdn.jsdelivr.net/gh/lipis/flag-icons@7/flags/4x3/${iso2.toLowerCase()}.svg`;
+
+    try {
+        await new Promise((res, rej) => {
+            img.onload = res;
+            img.onerror = rej;
+        });
+    } catch {
+        return '#4CAF50';
+    }
+
+    const w = 96, h = 72;
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+
+    ctx.drawImage(img, 0, 0, w, h);
+
+    let center;
+    try {
+        center = ctx.getImageData(Math.floor(w / 2), Math.floor(h / 2), 1, 1).data;
+    } catch (err) {
+        console.warn('No se pudo leer la bandera para', iso2, err);
+        return '#4CAF50';
+    }
+    const toHex = v => v.toString(16).padStart(2, '0');
+    return `#${toHex(center[0])}${toHex(center[1])}${toHex(center[2])}`;
+}
+
 // Variables para el sistema de pistas progresivas
 let currentClues = [];
 let clueIndex = 0;
@@ -227,24 +261,25 @@ async function initGlobe() {
 }
 
 // Manejar clic en país
-function handleCountryClick(polygon, event, coords) {
+async function handleCountryClick(polygon, event, coords) {
     if (!targetCountry) return;
 
     const clickedISO = polygon.properties.ISO_A3 || polygon.properties.ADM0_A3;
 
     if (clickedISO === targetCountry.ISO_A3) {
         stopRoundTimer();
-        showMessage(`¡Correcto! Ganaste ${currentRoundPoints} puntos. 🎉`, true);
+        showMessage(`¡Correcto!<br/>+${currentRoundPoints} puntos. 🎉`, true);
         score += currentRoundPoints;
         document.getElementById('score').textContent = score;
 
         // ADD to completed list
         completedCountries.add(targetCountry.ISO_A3);
 
-        // UPDATE map colors to show temporary green highlight
+        const fillHex = await getFlagCenterColorHex(targetCountry.ISO_A2);
+
         globe.polygonCapColor(d => {
             const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
-            if (iso === targetCountry.ISO_A3) return '#4CAF50'; // Highlight correct
+            if (iso === targetCountry.ISO_A3) return fillHex;
             return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
         });
 
@@ -254,7 +289,7 @@ function handleCountryClick(polygon, event, coords) {
         }, 2000); // Incrementado tiempo de espera para leer el mensaje
     } else {
         const clickedName = getCountryNameES(polygon.properties, clickedISO) || 'ese país';
-        showMessage(`Incorrecto. Ese es ${clickedName}. ¡Inténtalo de nuevo! 🤔`, false);
+        showMessage(`No es correcto.<br/>Ese es ${clickedName}. 🤔`, false);
         penalizeIncorrectAttempt();
         setTimeout(hideMessage, 2000);
     }
@@ -422,7 +457,7 @@ function getFeatureCentroid(feature) {
 
 function showMessage(text, isCorrect) {
     const messageEl = document.getElementById('message');
-    messageEl.textContent = text;
+    messageEl.innerHTML = text;
     messageEl.className = 'message ' + (isCorrect ? 'correct' : 'incorrect');
     messageEl.style.display = 'block';
 }
