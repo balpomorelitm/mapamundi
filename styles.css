@@ -314,7 +314,8 @@ body {
 
 .game-button,
 #next-clue-btn,
-#skip-btn {
+#skip-btn,
+.end-game-button {
     width: 100%;
     padding: 15px 20px;
     margin: 8px 0;
@@ -356,6 +357,22 @@ body {
     box-shadow: var(--shadow-lg), var(--glow-secondary);
 }
 
+.end-game-button {
+    /* Estilo distintivo - amarillo/naranja */
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+    box-shadow: 0 0 30px rgba(255, 152, 0, 0.3);
+}
+
+.end-game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 152, 0, 0.4);
+}
+
+.end-game-button:active {
+    transform: translateY(0);
+}
+
 .game-button::before {
     content: '';
     position: absolute;
@@ -376,6 +393,67 @@ body {
 
 #clue-box button {
     width: 100%;
+}
+
+/* Modal para ingresar nombre */
+.name-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px) saturate(200%);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    z-index: 2000;
+    min-width: 350px;
+    display: none;
+}
+
+.name-input {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-size: 16px;
+    text-align: center;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn.save {
+    background: var(--success-color);
+    color: white;
+}
+
+.modal-btn.cancel {
+    background: var(--error-color);
+    color: white;
 }
 
 /* Style for the flag clue */

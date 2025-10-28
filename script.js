@@ -72,6 +72,160 @@ async function displayLeaderboard() {
     leaderboardList.innerHTML = leaderboardHTML;
 }
 
+// Función para obtener top 15 puntuaciones
+async function getTop15Scores() {
+    if (!supabase) {
+        console.error('Supabase no está inicializado');
+        return [];
+    }
+
+    const { data, error } = await supabase
+        .from('leaderboard')
+        .select('score')
+        .order('score', { ascending: false })
+        .limit(15);
+
+    if (error) {
+        console.error('Error obteniendo top 15:', error);
+        return [];
+    }
+
+    return (data || []).map(record => record.score);
+}
+
+// Verificar si la puntuación está en el top 15
+async function isTopScore(currentScore) {
+    const topScores = await getTop15Scores();
+
+    if (topScores.length < 15) {
+        return true;
+    }
+
+    const lowestTopScore = topScores[topScores.length - 1];
+    return currentScore > lowestTopScore;
+}
+
+// Mostrar modal para ingresar nombre
+function showNameModal(currentScore) {
+    closeNameModal();
+
+    const modalHTML = `
+        <div id="name-modal" class="name-modal">
+            <h3>🏆 ¡Felicidades!</h3>
+            <p>Tu puntuación de <strong>${currentScore}</strong> puntos está entre las 15 mejores.</p>
+            <p>¿Cómo te llamas?</p>
+            <input type="text" id="player-name-input" class="name-input" 
+                   placeholder="Escribe tu nombre aquí..." maxlength="30">
+            <div class="modal-buttons">
+                <button class="modal-btn save" onclick="savePlayerScore()">💾 Guardar</button>
+                <button class="modal-btn cancel" onclick="closeNameModal()">❌ Cancelar</button>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const modal = document.getElementById('name-modal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+
+    const nameInput = document.getElementById('player-name-input');
+    if (nameInput) {
+        nameInput.focus();
+        nameInput.addEventListener('keypress', event => {
+            if (event.key === 'Enter') {
+                savePlayerScore();
+            }
+        });
+    }
+}
+
+// Guardar puntuación del jugador
+async function savePlayerScore() {
+    const nameInput = document.getElementById('player-name-input');
+    if (!nameInput) return;
+
+    const playerName = nameInput.value.trim();
+
+    if (!playerName || playerName.length < 2) {
+        alert('Por favor, ingresa un nombre válido (mínimo 2 caracteres)');
+        nameInput.focus();
+        return;
+    }
+
+    const success = await saveScore(playerName, score);
+
+    if (success) {
+        showMessage(`¡Puntuación guardada!<br/>Nombre: ${playerName}`, true);
+        closeNameModal();
+
+        setTimeout(async () => {
+            await displayLeaderboard();
+            const leaderboard = document.getElementById('leaderboard');
+            if (leaderboard) {
+                leaderboard.style.display = 'block';
+            }
+        }, 2000);
+    } else {
+        alert('Error al guardar la puntuación. Intenta de nuevo.');
+    }
+}
+
+// Cerrar modal
+function closeNameModal() {
+    const modal = document.getElementById('name-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+// Función principal para terminar partida
+async function handleEndGame() {
+    if (!confirm('¿Estás seguro de que quieres terminar la partida?')) {
+        return;
+    }
+
+    stopRoundTimer();
+
+    targetCountry = null;
+
+    const nextClueBtn = document.getElementById('next-clue-btn');
+    const skipBtn = document.getElementById('skip-btn');
+    if (nextClueBtn) nextClueBtn.disabled = true;
+    if (skipBtn) skipBtn.disabled = true;
+
+    const isTop = await isTopScore(score);
+
+    if (isTop) {
+        showNameModal(score);
+    } else {
+        const topScores = await getTop15Scores();
+        const minTopScore = topScores.length >= 15 ? topScores[14] : 0;
+
+        showMessage(
+            `Partida terminada.<br/>Puntuación: ${score}<br/>(Necesitas ${minTopScore + 1}+ para el top 15)`,
+            false
+        );
+
+        setTimeout(() => {
+            if (confirm('¿Quieres jugar otra vez?')) {
+                handleNewGameClick();
+            }
+        }, 3000);
+    }
+
+    const clueBox = document.getElementById('clue-box');
+    if (clueBox) {
+        clueBox.style.display = 'none';
+    }
+
+    const clueList = document.getElementById('clue-list');
+    if (clueList) {
+        clueList.innerHTML = '';
+    }
+}
+
 // Mostrar/ocultar leaderboard
 function toggleLeaderboard() {
     const leaderboard = document.getElementById('leaderboard');
@@ -375,6 +529,7 @@ async function initGlobe() {
     document.getElementById('next-clue-btn').addEventListener('click', showNextClue);
     document.getElementById('skip-btn').addEventListener('click', handleSkip);
     document.getElementById('new-game-btn').addEventListener('click', handleNewGameClick);
+    document.getElementById('end-game-btn').addEventListener('click', handleEndGame);
 
     globe = Globe()
         // Fondo transparente para mostrar las estrellas
@@ -555,6 +710,8 @@ function handleNewGameClick() {
         stopRoundTimer();
     }
 
+    closeNameModal();
+
     // 2. Reset score
     score = 0;
     document.getElementById('score').textContent = score;
@@ -706,7 +863,7 @@ async function loadNewGame() {
 
     const button = document.getElementById('next-clue-btn');
     button.disabled = false;
-    button.textContent = 'Pedir Pista (coste: -5%)';
+    button.textContent = 'Pedir Pista (coste: -15%)';
 
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = false;
