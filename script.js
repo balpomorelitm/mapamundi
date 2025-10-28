@@ -221,7 +221,15 @@ function showNextClue() {
 
     const clueList = document.getElementById('clue-list');
     const li = document.createElement('li');
-    li.textContent = currentClues[clueIndex];
+    const clueText = currentClues[clueIndex];
+
+    if (clueText === "PISTA: Bandera" && targetCountry.ISO_A2) {
+        const iso_a2 = targetCountry.ISO_A2;
+        li.innerHTML = `Pista: <span class="fi fi-${iso_a2} clue-flag"></span>`;
+    } else {
+        li.textContent = clueText;
+    }
+
     clueList.appendChild(li);
 
     clueIndex++;

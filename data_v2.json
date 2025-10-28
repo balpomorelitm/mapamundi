@@ -2,6 +2,7 @@
   {
     "ISO_A3": "ESP",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Madrid.",
       "Su moneda es el euro.",
       "Es famoso por la paella.",
@@ -12,11 +13,13 @@
       "También produce vino de alta calidad.",
       "Tiene clima mediterráneo en la costa.",
       "Tiene clima continental en el interior."
-    ]
+    ],
+    "ISO_A2": "es"
   },
   {
     "ISO_A3": "MEX",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ciudad de México.",
       "Su moneda es el peso mexicano.",
       "Es famoso por los tacos.",
@@ -26,11 +29,13 @@
       "Produce aguacate para exportación.",
       "Produce tequila reconocido mundialmente.",
       "Produce chocolate con tradición ancestral."
-    ]
+    ],
+    "ISO_A2": "mx"
   },
   {
     "ISO_A3": "GTM",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ciudad de Guatemala.",
       "Su moneda es el quetzal.",
       "El quetzal es también el ave nacional.",
@@ -38,11 +43,13 @@
       "Tikal es una antigua ciudad maya muy famosa.",
       "El Lago de Atitlán es uno de los lagos más bellos del mundo.",
       "Produce café de alta calidad para exportar."
-    ]
+    ],
+    "ISO_A2": "gt"
   },
   {
     "ISO_A3": "HND",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Tegucigalpa.",
       "Su moneda es la lempira.",
       "Produce café para exportación.",
@@ -51,11 +58,13 @@
       "Tiene hermosas playas en el Caribe como Roatán.",
       "El clima es tropical en las costas.",
       "El río Patuca es el más largo del país."
-    ]
+    ],
+    "ISO_A2": "hn"
   },
   {
     "ISO_A3": "SLV",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: San Salvador.",
       "Usa el dólar estadounidense como moneda oficial.",
       "Es el país más pequeño de Centroamérica.",
@@ -63,11 +72,13 @@
       "Las pupusas son su comida tradicional más famosa.",
       "Produce café para exportación.",
       "Produce azúcar para exportación."
-    ]
+    ],
+    "ISO_A2": "sv"
   },
   {
     "ISO_A3": "NIC",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Managua.",
       "Su moneda es el córdoba.",
       "Produce café para exportar.",
@@ -76,11 +87,13 @@
       "Tiene muchos volcanes activos como el Masaya.",
       "La ciudad colonial de Granada es muy turística.",
       "Es conocido como la tierra de lagos y volcanes."
-    ]
+    ],
+    "ISO_A2": "ni"
   },
   {
     "ISO_A3": "CRI",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: San José.",
       "Su moneda es el colón costarricense.",
       "No tiene ejército desde 1948.",
@@ -91,11 +104,13 @@
       "Produce banano para mercados internacionales.",
       "Tiene costas en el Océano Pacífico.",
       "Tiene costas en el Mar Caribe."
-    ]
+    ],
+    "ISO_A2": "cr"
   },
   {
     "ISO_A3": "PAN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ciudad de Panamá.",
       "Su moneda es el balboa.",
       "También usa el dólar estadounidense como moneda.",
@@ -105,11 +120,13 @@
       "Exporta banano a muchos países.",
       "Exporta café de alta calidad.",
       "Exporta productos del mar."
-    ]
+    ],
+    "ISO_A2": "pa"
   },
   {
     "ISO_A3": "CUB",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: La Habana.",
       "Su moneda es el peso cubano.",
       "Produce tabaco reconocido mundialmente.",
@@ -119,11 +136,13 @@
       "El Valle de Viñales tiene paisajes espectaculares.",
       "Tiene playas hermosas de arena blanca.",
       "Tiene un clima tropical durante todo el año."
-    ]
+    ],
+    "ISO_A2": "cu"
   },
   {
     "ISO_A3": "DOM",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Santo Domingo.",
       "Su moneda es el peso dominicano.",
       "Produce cacao de calidad para exportación.",
@@ -132,11 +151,13 @@
       "El merengue es un baile tradicional del país.",
       "La bachata es otro baile típico de su cultura.",
       "Comparte la isla La Española con Haití."
-    ]
+    ],
+    "ISO_A2": "do"
   },
   {
     "ISO_A3": "VEN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Caracas.",
       "Su moneda es el bolívar.",
       "Tiene las mayores reservas de petróleo del mundo.",
@@ -144,11 +165,13 @@
       "El Relámpago del Catatumbo es un fenómeno único en el mundo.",
       "Las arepas son su comida tradicional más popular.",
       "El Parque Nacional Canaima es patrimonio de la humanidad."
-    ]
+    ],
+    "ISO_A2": "ve"
   },
   {
     "ISO_A3": "COL",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Bogotá.",
       "Su moneda es el peso colombiano.",
       "Produce café de calidad mundial.",
@@ -158,11 +181,13 @@
       "Exporta flores a numerosos países.",
       "Produce banano para exportación.",
       "El río Magdalena es el más importante del país."
-    ]
+    ],
+    "ISO_A2": "co"
   },
   {
     "ISO_A3": "ECU",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Quito.",
       "Su moneda es el dólar estadounidense.",
       "Exporta banano a todo el mundo.",
@@ -170,11 +195,13 @@
       "Fue el primer país en dar derechos constitucionales a la naturaleza.",
       "La línea del ecuador cruza el país, de ahí su nombre.",
       "El volcán Cotopaxi es uno de los volcanes activos más altos."
-    ]
+    ],
+    "ISO_A2": "ec"
   },
   {
     "ISO_A3": "PER",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Lima.",
       "Su moneda es el sol.",
       "Es famoso por Machu Picchu.",
@@ -183,11 +210,13 @@
       "El ceviche es su plato nacional más conocido.",
       "Tiene tres regiones naturales bien definidas.",
       "Incluye costa, sierra y selva amazónica."
-    ]
+    ],
+    "ISO_A2": "pe"
   },
   {
     "ISO_A3": "BOL",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Sucre.",
       "La Paz es la sede de gobierno del país.",
       "Su moneda es el boliviano.",
@@ -197,11 +226,13 @@
       "Tiene las mayores reservas de litio del mundo.",
       "El quechua es idioma oficial además del español.",
       "El aimara es idioma oficial además del español."
-    ]
+    ],
+    "ISO_A2": "bo"
   },
   {
     "ISO_A3": "CHL",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Santiago.",
       "Su moneda es el peso chileno.",
       "Es el país más largo del mundo.",
@@ -214,11 +245,13 @@
       "Cuenta con desiertos extensos en el norte.",
       "Posee bosques templados en el sur.",
       "Tiene playas a lo largo del océano Pacífico."
-    ]
+    ],
+    "ISO_A2": "cl"
   },
   {
     "ISO_A3": "ARG",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Buenos Aires.",
       "Su moneda es el peso argentino.",
       "Es famoso por el tango.",
@@ -229,11 +262,13 @@
       "Produce soja en grandes volúmenes.",
       "La Patagonia argentina tiene glaciares espectaculares.",
       "La Patagonia argentina ofrece paisajes naturales únicos."
-    ]
+    ],
+    "ISO_A2": "ar"
   },
   {
     "ISO_A3": "URY",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Montevideo.",
       "Su moneda es el peso uruguayo.",
       "Produce carne de excelente calidad.",
@@ -242,11 +277,13 @@
       "Fue sede del primer Mundial de Fútbol en 1930.",
       "El río Uruguay separa el país de Argentina.",
       "Tiene un clima templado con las cuatro estaciones."
-    ]
+    ],
+    "ISO_A2": "uy"
   },
   {
     "ISO_A3": "PRY",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Asunción.",
       "Su moneda es el guaraní.",
       "Tiene dos idiomas oficiales reconocidos.",
@@ -257,11 +294,13 @@
       "Produce soja para exportación.",
       "Produce carne de res de calidad.",
       "Produce algodón como cultivo importante."
-    ]
+    ],
+    "ISO_A2": "py"
   },
   {
     "ISO_A3": "GNQ",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Malabo.",
       "Su moneda es el franco CFA.",
       "Está situada en África Central.",
@@ -271,214 +310,257 @@
       "Tiene una parte continental en el continente africano.",
       "También posee islas en el Golfo de Guinea.",
       "Tiene clima tropical ecuatorial con mucha lluvia."
-    ]
+    ],
+    "ISO_A2": "gq"
   },
   {
     "ISO_A3": "USA",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Washington D.C.",
       "Idioma principal: Inglés",
       "Moneda: Dólar estadounidense",
       "Está en América del Norte, entre Canadá y México.",
       "Limita con los océanos Atlántico y Pacífico."
-    ]
+    ],
+    "ISO_A2": "us"
   },
   {
     "ISO_A3": "CAN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ottawa",
       "Idiomas oficiales: Inglés y Francés",
       "Moneda: Dólar canadiense",
       "Está en América del Norte.",
       "Está al norte de Estados Unidos."
-    ]
+    ],
+    "ISO_A2": "ca"
   },
   {
     "ISO_A3": "BRA",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Brasilia",
       "Idioma oficial: Portugués",
       "Moneda: Real brasileño",
       "Es el país más grande de Sudamérica.",
       "Cubre gran parte de la selva amazónica."
-    ]
+    ],
+    "ISO_A2": "br"
   },
   {
     "ISO_A3": "GBR",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Londres",
       "Idioma oficial: Inglés",
       "Moneda: Libra esterlina",
       "Es un archipiélago de islas en Europa Occidental.",
       "Está al noroeste de Francia."
-    ]
+    ],
+    "ISO_A2": "gb"
   },
   {
     "ISO_A3": "FRA",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: París",
       "Idioma oficial: Francés",
       "Moneda: Euro",
       "Está en Europa Occidental.",
       "Está al norte de España y al este de Alemania."
-    ]
+    ],
+    "ISO_A2": "fr"
   },
   {
     "ISO_A3": "DEU",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Berlín",
       "Idioma oficial: Alemán",
       "Moneda: Euro",
       "Está en el centro de Europa.",
       "Limita con 9 países, incluyendo Francia y Polonia."
-    ]
+    ],
+    "ISO_A2": "de"
   },
   {
     "ISO_A3": "ITA",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Roma",
       "Idioma oficial: Italiano",
       "Moneda: Euro",
       "Tiene una distintiva forma de bota.",
       "Es una península en el Mar Mediterráneo."
-    ]
+    ],
+    "ISO_A2": "it"
   },
   {
     "ISO_A3": "RUS",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Moscú",
       "Idioma oficial: Ruso",
       "Moneda: Rublo ruso",
       "Es el país más grande del mundo.",
       "Se extiende por Europa del Este y el norte de Asia."
-    ]
+    ],
+    "ISO_A2": "ru"
   },
   {
     "ISO_A3": "CHN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Pekín (Beijing)",
       "Idioma oficial: Chino mandarín",
       "Moneda: Yuan (Renminbi)",
       "Está en Asia Oriental.",
       "Es uno de los países más poblados del mundo."
-    ]
+    ],
+    "ISO_A2": "cn"
   },
   {
     "ISO_A3": "JPN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Tokio",
       "Idioma oficial: Japonés",
       "Moneda: Yen",
       "Es un archipiélago de islas en Asia Oriental.",
       "Está al este de China y las Coreas."
-    ]
+    ],
+    "ISO_A2": "jp"
   },
   {
     "ISO_A3": "IND",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Nueva Delhi",
       "Idiomas oficiales: Hindi e Inglés",
       "Moneda: Rupia india",
       "Está en el sur de Asia.",
       "Es una gran península que se adentra en el Océano Índico."
-    ]
+    ],
+    "ISO_A2": "in"
   },
   {
     "ISO_A3": "AUS",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Canberra",
       "Idioma oficial: Inglés",
       "Moneda: Dólar australiano",
       "Es un país que ocupa un continente entero.",
       "Está en Oceanía, rodeado por los océanos Índico y Pacífico."
-    ]
+    ],
+    "ISO_A2": "au"
   },
   {
     "ISO_A3": "ZAF",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Pretoria (administrativa)",
       "Tiene 11 idiomas oficiales (incluyendo Zulú, Xhosa, Inglés).",
       "Moneda: Rand",
       "Está en el extremo sur de África."
-    ]
+    ],
+    "ISO_A2": "za"
   },
   {
     "ISO_A3": "EGY",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: El Cairo",
       "Idioma oficial: Árabe",
       "Moneda: Libra egipcia",
       "Está en el noreste de África.",
       "Es famoso por sus pirámides y el río Nilo."
-    ]
+    ],
+    "ISO_A2": "eg"
   },
   {
     "ISO_A3": "SAU",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Riad",
       "Idioma oficial: Árabe",
       "Moneda: Riyal saudí",
       "Ocupa la mayor parte de la Península Arábiga.",
       "Limita con el Mar Rojo y el Golfo Pérsico."
-    ]
+    ],
+    "ISO_A2": "sa"
   },
   {
     "ISO_A3": "TUR",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ankara",
       "Idioma oficial: Turco",
       "Moneda: Lira turca",
       "Es un país transcontinental.",
       "Está ubicado entre Europa del Este y Asia Occidental."
-    ]
+    ],
+    "ISO_A2": "tr"
   },
   {
     "ISO_A3": "KOR",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Seúl",
       "Idioma oficial: Coreano",
       "Moneda: Won surcoreano",
       "Está en la parte sur de la Península de Corea, en Asia Oriental."
-    ]
+    ],
+    "ISO_A2": "kr"
   },
   {
     "ISO_A3": "NGA",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Abuya",
       "Idioma oficial: Inglés",
       "Moneda: Naira",
       "Está en África Occidental.",
       "Es el país más poblado de África."
-    ]
+    ],
+    "ISO_A2": "ng"
   },
   {
     "ISO_A3": "IDN",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Yakarta",
       "Idioma oficial: Indonesio",
       "Moneda: Rupia indonesia",
       "Es el archipiélago más grande del mundo.",
       "Está en el Sudeste Asiático, entre los océanos Índico y Pacífico."
-    ]
+    ],
+    "ISO_A2": "id"
   },
   {
     "ISO_A3": "CHE",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Berna",
       "Idiomas oficiales: Alemán, Francés, Italiano, Romanche",
       "Moneda: Franco suizo",
       "Es un país sin salida al mar en Europa Central.",
       "Es famoso por los Alpes y su neutralidad."
-    ]
+    ],
+    "ISO_A2": "ch"
   },
   {
     "ISO_A3": "NLD",
     "clues_es": [
+      "PISTA: Bandera",
       "Capital: Ámsterdam",
       "Idioma oficial: Neerlandés (Holandés)",
       "Moneda: Euro",
       "Está en el noroeste de Europa.",
       "Es conocido por sus canales y molinos de viento."
-    ]
+    ],
+    "ISO_A2": "nl"
   }
 ]
