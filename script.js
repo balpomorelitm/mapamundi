@@ -7,6 +7,8 @@ let geoJsonData = null;
 // NEW VARIABLES for game state
 let availableCountries = []; // Countries we can still pick from
 let completedCountries = new Set(); // ISO codes of countries already guessed
+let lastSkippedISO = null; // ISO code of the most recently skipped country
+let recentlyRevealedISO = null; // ISO code temporarily highlighted after revealing
 
 // Variables para el sistema de pistas progresivas
 let currentClues = [];
@@ -120,6 +122,9 @@ async function initGlobe() {
         .polygonAltitude(0.01) // Elevación mínima (MÁS RÁPIDO)
         .polygonCapColor(d => {
             const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+            if (recentlyRevealedISO && iso === recentlyRevealedISO) {
+                return 'rgba(180, 50, 50, 0.7)';
+            }
             return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
         })
         .polygonSideColor(() => 'rgba(0, 100, 0, 0.1)')
@@ -193,14 +198,16 @@ function handleSkip() {
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = true;
 
-    completedCountries.add(skippedCountry.ISO_A3);
-
     const correctName = countryNamesES[skippedCountry.ISO_A3] || skippedCountry.ISO_A3;
     showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
 
-    // 3. Update map colors to show the skipped country as "completed" (dark green)
+    // 3. Update map colors to show the skipped country as a temporary reveal
+    recentlyRevealedISO = skippedCountry.ISO_A3;
     globe.polygonCapColor(d => {
         const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+        if (recentlyRevealedISO && iso === recentlyRevealedISO) {
+            return 'rgba(180, 50, 50, 0.7)';
+        }
         return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
     });
 
@@ -215,6 +222,10 @@ function handleSkip() {
             globe.pointOfView({ ...centroid, altitude: 1.5 }, 1000);
         }
     }
+
+    // Reinsert skipped country so it can appear again later
+    availableCountries.push(skippedCountry);
+    lastSkippedISO = skippedCountry.ISO_A3;
 
     // 5. Load next game. loadNewGame() will assign a new targetCountry.
     setTimeout(() => {
@@ -314,6 +325,8 @@ function showNextClue() {
 
 function loadNewGame() {
 
+    recentlyRevealedISO = null;
+
     // 1. Reset map colors from any temporary highlights
     globe.polygonCapColor(d => {
         const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
@@ -345,8 +358,23 @@ function loadNewGame() {
     skipButton.disabled = false;
 
     // 4. Pick a new country from AVAILABLE list and REMOVE it
-    const randomIndex = Math.floor(Math.random() * availableCountries.length);
+    let randomIndex = Math.floor(Math.random() * availableCountries.length);
+    let candidate = availableCountries[randomIndex];
+    let attempts = 0;
+
+    while (
+        availableCountries.length > 1 &&
+        lastSkippedISO &&
+        candidate.ISO_A3 === lastSkippedISO &&
+        attempts < 10
+    ) {
+        randomIndex = Math.floor(Math.random() * availableCountries.length);
+        candidate = availableCountries[randomIndex];
+        attempts++;
+    }
+
     targetCountry = availableCountries.splice(randomIndex, 1)[0]; // Pulls *and removes*
+    lastSkippedISO = null;
 
     // 5. Load clues for the new country
     // --- New Clue Sorting Logic ---
