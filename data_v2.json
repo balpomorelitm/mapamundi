@@ -542,5 +542,250 @@
       "Está en el noroeste de Europa.",
       "Es famoso por sus canales y molinos de viento."
     ]
+  },
+  {
+    "ISO_A3": "NOR",
+    "ISO_A2": "no",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Oslo.",
+      "La moneda es la corona noruega.",
+      "La lengua oficial es el noruego.",
+      "Está en el norte de Europa.",
+      "Está al oeste de Suecia.",
+      "Es famoso por sus fiordos."
+    ]
+  },
+  {
+    "ISO_A3": "SWE",
+    "ISO_A2": "se",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Estocolmo.",
+      "La moneda es la corona sueca.",
+      "La lengua oficial es el sueco.",
+      "Está en el norte de Europa.",
+      "Está al este de Noruega.",
+      "Es famoso por ser la sede de los premios Nobel."
+    ]
+  },
+  {
+    "ISO_A3": "DNK",
+    "ISO_A2": "dk",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Copenhague.",
+      "La moneda es la corona danesa.",
+      "La lengua oficial es el danés.",
+      "Es una península y varias islas.",
+      "Está al norte de Alemania."
+    ]
+  },
+  {
+    "ISO_A3": "FIN",
+    "ISO_A2": "fi",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Helsinki.",
+      "La moneda es el euro.",
+      "Las lenguas oficiales son el finlandés y el sueco.",
+      "Está en el norte de Europa.",
+      "Hay miles de lagos en su territorio."
+    ]
+  },
+  {
+    "ISO_A3": "IRL",
+    "ISO_A2": "ie",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Dublín.",
+      "La moneda es el euro.",
+      "Las lenguas oficiales son el irlandés y el inglés.",
+      "Es una isla en Europa Occidental.",
+      "Está al oeste de Reino Unido."
+    ]
+  },
+  {
+    "ISO_A3": "PRT",
+    "ISO_A2": "pt",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Lisboa.",
+      "La moneda es el euro.",
+      "La lengua oficial es el portugués.",
+      "Está en la Península Ibérica.",
+      "Está al oeste de España.",
+      "Tiene costa en el Océano Atlántico."
+    ]
+  },
+  {
+    "ISO_A3": "GRC",
+    "ISO_A2": "gr",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Atenas.",
+      "La moneda es el euro.",
+      "La lengua oficial es el griego.",
+      "Está en el sureste de Europa.",
+      "Es una península y tiene muchas islas."
+    ]
+  },
+  {
+    "ISO_A3": "POL",
+    "ISO_A2": "pl",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Varsovia.",
+      "La moneda es el złoty.",
+      "La lengua oficial es el polaco.",
+      "Está en Europa Central.",
+      "Está al este de Alemania."
+    ]
+  },
+  {
+    "ISO_A3": "AUT",
+    "ISO_A2": "at",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Viena.",
+      "La moneda es el euro.",
+      "La lengua oficial es el alemán.",
+      "Está en Europa Central.",
+      "No tiene costa.",
+      "Hay montañas muy famosas: los Alpes."
+    ]
+  },
+  {
+    "ISO_A3": "BEL",
+    "ISO_A2": "be",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Bruselas.",
+      "La moneda es el euro.",
+      "Tiene tres lenguas oficiales (neerlandés, francés, alemán).",
+      "Está en Europa Occidental.",
+      "Está al norte de Francia."
+    ]
+  },
+  {
+    "ISO_A3": "SGP",
+    "ISO_A2": "sg",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Singapur.",
+      "La moneda es el dólar de Singapur.",
+      "Tiene cuatro lenguas oficiales.",
+      "Es una isla y ciudad-estado.",
+      "Está en el Sudeste Asiático."
+    ]
+  },
+  {
+    "ISO_A3": "NZL",
+    "ISO_A2": "nz",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Wellington.",
+      "La moneda es el dólar neozelandés.",
+      "Las lenguas oficiales son el inglés y el maorí.",
+      "Es un archipiélago en Oceanía.",
+      "Está al sureste de Australia."
+    ]
+  },
+  {
+    "ISO_A3": "MYS",
+    "ISO_A2": "my",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Kuala Lumpur.",
+      "La moneda es el ringgit.",
+      "La lengua oficial es el malayo.",
+      "Está en el Sudeste Asiático.",
+      "Las Torres Petronas son un lugar de interés turístico."
+    ]
+  },
+  {
+    "ISO_A3": "THA",
+    "ISO_A2": "th",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Bangkok.",
+      "La moneda es el baht.",
+      "La lengua oficial es el tailandés.",
+      "Está en el Sudeste Asiático.",
+      "Es famoso por sus templos y playas."
+    ]
+  },
+  {
+    "ISO_A3": "VNM",
+    "ISO_A2": "vn",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Hanói.",
+      "La moneda es el đồng.",
+      "La lengua oficial es el vietnamita.",
+      "Está en el Sudeste Asiático.",
+      "Tiene una costa muy larga."
+    ]
+  },
+  {
+    "ISO_A3": "ARE",
+    "ISO_A2": "ae",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Abu Dabi.",
+      "La moneda es el dírham.",
+      "La lengua oficial es el árabe.",
+      "Está en la Península Arábiga.",
+      "El clima es muy árido.",
+      "Hay grandes desiertos."
+    ]
+  },
+  {
+    "ISO_A3": "ISR",
+    "ISO_A2": "il",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Jerusalén.",
+      "La moneda es el shéquel.",
+      "Las lenguas oficiales son el hebreo y el árabe.",
+      "Está en Oriente Medio.",
+      "Tiene costa en el Mar Mediterráneo."
+    ]
+  },
+  {
+    "ISO_A3": "MAR",
+    "ISO_A2": "ma",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Rabat.",
+      "La moneda es el dírham marroquí.",
+      "Las lenguas oficiales son el árabe y el bereber.",
+      "Está en el norte de África.",
+      "Está al sur de España."
+    ]
+  },
+  {
+    "ISO_A3": "KEN",
+    "ISO_A2": "ke",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Nairobi.",
+      "La moneda es el chelín keniano.",
+      "Las lenguas oficiales son el suajili y el inglés.",
+      "Está en África Oriental.",
+      "Es famoso por sus parques nacionales y sabanas."
+    ]
+  },
+  {
+    "ISO_A3": "UKR",
+    "ISO_A2": "ua",
+    "clues_es": [
+      "PISTA: Bandera",
+      "La capital es Kiev.",
+      "La moneda es la grivna.",
+      "La lengua oficial es el ucraniano.",
+      "Está en Europa del Este.",
+      "Es un país grande al oeste de Rusia."
+    ]
   }
 ]
