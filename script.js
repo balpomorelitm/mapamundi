@@ -301,7 +301,32 @@ function loadNewGame() {
     targetCountry = availableCountries.splice(randomIndex, 1)[0]; // Pulls *and removes*
 
     // 5. Load clues for the new country
-    currentClues = [...targetCountry.clues_es].sort(() => Math.random() - 0.5);
+    // --- New Clue Sorting Logic ---
+    const allClues = [...targetCountry.clues_es];
+
+    // 1. Extract the special (easy) clues
+    // We use .find() to get the first match for each
+    const banderaClue = allClues.find(c => c.startsWith("PISTA: Bandera"));
+    const capitalClue = allClues.find(c => c.startsWith("La capital es"));
+    const monedaClue = allClues.find(c => c.startsWith("La moneda es"));
+
+    // 2. Get all other (general) clues
+    const generalClues = allClues.filter(c => 
+        c !== banderaClue && 
+        c !== capitalClue && 
+        c !== monedaClue
+    );
+
+    // 3. Shuffle only the general clues
+    generalClues.sort(() => Math.random() - 0.5);
+
+    // 4. Rebuild the final clues array in the correct order
+    // (General first, then easy ones in order)
+    currentClues = [...generalClues];
+    if (monedaClue) currentClues.push(monedaClue);
+    if (capitalClue) currentClues.push(capitalClue);
+    if (banderaClue) currentClues.push(banderaClue);
+    // --- End of New Logic ---
     showNextClue();
 
     console.log('Nuevo país:', countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3);
