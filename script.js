@@ -331,7 +331,7 @@ function startRoundTimer() {
 
     roundTimer = setInterval(() => {
         if (targetCountry && currentRoundPoints > 0) {
-            currentRoundPoints -= 3; // Subtract 3 points
+            currentRoundPoints -= 1; // Subtract 1 point
 
             if (currentRoundPoints < 0) {
                 currentRoundPoints = 0;
