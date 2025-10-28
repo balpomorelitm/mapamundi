@@ -255,8 +255,14 @@ function handleCountryClick(polygon, event, coords) {
     } else {
         const clickedName = getCountryNameES(polygon.properties, clickedISO) || 'ese país';
         showMessage(`Incorrecto. Ese es ${clickedName}. ¡Inténtalo de nuevo! 🤔`, false);
+        penalizeIncorrectAttempt();
         setTimeout(hideMessage, 2000);
     }
+}
+
+function penalizeIncorrectAttempt() {
+    currentRoundPoints = Math.max(0, currentRoundPoints - 15);
+    document.getElementById('round-score').textContent = currentRoundPoints;
 }
 
 // Manejar botón de pasar (mostrar respuesta)
