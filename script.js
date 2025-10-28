@@ -180,7 +180,7 @@ async function initGlobe() {
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('clue-box').style.display = 'block';
-    document.getElementById('score-box').style.display = 'block';
+    document.getElementById('score-panel').style.display = 'flex';
 
     document.getElementById('next-clue-btn').addEventListener('click', showNextClue);
     document.getElementById('skip-btn').addEventListener('click', handleSkip);
