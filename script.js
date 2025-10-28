@@ -268,7 +268,9 @@ async function handleCountryClick(polygon, event, coords) {
 
     if (clickedISO === targetCountry.ISO_A3) {
         stopRoundTimer();
-        showMessage(`¡Correcto!<br/>+${currentRoundPoints} puntos. 🎉`, true);
+
+        showMessage(`¡Correcto! You won ${currentRoundPoints} points`, true);
+
         score += currentRoundPoints;
         document.getElementById('score').textContent = score;
 
@@ -288,8 +290,8 @@ async function handleCountryClick(polygon, event, coords) {
             loadNewGame();
         }, 2000); // Incrementado tiempo de espera para leer el mensaje
     } else {
-        const clickedName = getCountryNameES(polygon.properties, clickedISO) || 'ese país';
-        showMessage(`No es correcto.<br/>Ese es ${clickedName}. 🤔`, false);
+        showMessage('¡Incorrecto! Try again!', false);
+
         penalizeIncorrectAttempt();
         setTimeout(hideMessage, 2000);
     }
@@ -316,7 +318,7 @@ function handleSkip() {
     skipButton.disabled = true;
 
     const correctName = getCountryNameES(skippedCountry, skippedCountry.ISO_A3);
-    showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
+    showMessage(`ANSWER: ${correctName}. Try again!`, false);
 
     // 3. Update map colors to show the skipped country as a temporary reveal
     recentlyRevealedISO = skippedCountry.ISO_A3;
