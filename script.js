@@ -4,6 +4,11 @@ let score = 0;
 let countriesData = [];
 let geoJsonData = null;
 
+// Variables para el sistema de pistas progresivas
+let currentClues = [];
+let clueIndex = 0;
+let currentRoundPoints = 100;
+
 // Mapeo de códigos ISO a nombres en español
 const countryNamesES = {
     'ESP': 'España', 'MEX': 'México', 'GTM': 'Guatemala', 'HND': 'Honduras',
@@ -30,12 +35,12 @@ const countryNamesES = {
 // Cargar datos del juego
 async function loadGameData() {
     try {
-        const response = await fetch('data.json');
+        const response = await fetch('data_v2.json');
         countriesData = await response.json();
-        console.log('Cargados', countriesData.length, 'datos de países');
+        console.log('Cargados', countriesData.length, 'datos de países (v2)');
     } catch (error) {
-        console.error('Error cargando data.json:', error);
-        alert('Error: No se pudo cargar data.json.');
+        console.error('Error cargando data_v2.json:', error);
+        alert('Error: No se pudo cargar data_v2.json.');
     }
 }
 
@@ -65,6 +70,8 @@ async function initGlobe() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('clue-box').style.display = 'block';
     document.getElementById('score-box').style.display = 'block';
+
+    document.getElementById('next-clue-btn').addEventListener('click', showNextClue);
 
     globe = Globe()
         // Texturas más ligeras o color sólido
@@ -107,20 +114,20 @@ function handleCountryClick(polygon, event, coords) {
     const clickedISO = polygon.properties.ISO_A3 || polygon.properties.ADM0_A3;
     
     if (clickedISO === targetCountry.ISO_A3) {
-        showMessage('¡Correcto! 🎉', true);
-        score++;
+        showMessage(`¡Correcto! Ganaste ${currentRoundPoints} puntos. 🎉`, true);
+        score += currentRoundPoints;
         document.getElementById('score').textContent = score;
-        
+
         highlightCountry(polygon);
-        
+
         setTimeout(() => {
             hideMessage();
             loadNewGame();
-        }, 1800); // Reducido tiempo de espera
+        }, 2000); // Incrementado tiempo de espera para leer el mensaje
     } else {
         const clickedName = countryNamesES[clickedISO] || polygon.properties.NAME || 'ese país';
         showMessage(`Incorrecto. Ese es ${clickedName}. ¡Inténtalo de nuevo! 🤔`, false);
-        setTimeout(hideMessage, 2000); // Reducido tiempo
+        setTimeout(hideMessage, 2000);
     }
 }
 
@@ -143,15 +150,50 @@ function hideMessage() {
     document.getElementById('message').style.display = 'none';
 }
 
+function showNextClue() {
+    if (!targetCountry || clueIndex >= currentClues.length) return;
+
+    if (clueIndex > 0) {
+        currentRoundPoints = Math.round(currentRoundPoints * 0.85);
+    }
+
+    document.getElementById('round-score').textContent = currentRoundPoints;
+
+    const clueList = document.getElementById('clue-list');
+    const li = document.createElement('li');
+    li.textContent = currentClues[clueIndex];
+    clueList.appendChild(li);
+
+    clueIndex++;
+
+    if (clueIndex >= currentClues.length) {
+        const button = document.getElementById('next-clue-btn');
+        button.disabled = true;
+        button.textContent = 'No hay más pistas';
+    }
+}
+
 function loadNewGame() {
     if (countriesData.length === 0) return;
-    
+
+    currentRoundPoints = 100;
+    clueIndex = 0;
+    currentClues = [];
+
+    document.getElementById('clue-list').innerHTML = '';
+    document.getElementById('round-score').textContent = currentRoundPoints;
+
+    const button = document.getElementById('next-clue-btn');
+    button.disabled = false;
+    button.textContent = 'Pedir Pista (coste: -15%)';
+
     const randomIndex = Math.floor(Math.random() * countriesData.length);
     targetCountry = countriesData[randomIndex];
-    
-    document.getElementById('capital').textContent = targetCountry.capital_es;
-    document.getElementById('fact').textContent = targetCountry.fact_es;
-    
+
+    currentClues = [...targetCountry.clues_es].sort(() => Math.random() - 0.5);
+
+    showNextClue();
+
     console.log('Nuevo país:', countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3);
 }
 
