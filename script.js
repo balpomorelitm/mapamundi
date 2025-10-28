@@ -182,38 +182,44 @@ function handleCountryClick(polygon, event, coords) {
 
 // Manejar botón de pasar (mostrar respuesta)
 function handleSkip() {
-    if (!targetCountry) return;
+    if (!targetCountry) return; // Check if a game is active
 
+    // 1. Store the country to be skipped and then immediately nullify the global target
+    //    THIS IS THE FIX: Clicks on the globe are now disabled.
+    const skippedCountry = targetCountry;
+    targetCountry = null;
+
+    // 2. Now, use the local 'skippedCountry' variable for all skip logic
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = true;
 
-    // ADD skipped country to completed list
-    completedCountries.add(targetCountry.ISO_A3);
+    completedCountries.add(skippedCountry.ISO_A3);
 
-    const correctName = countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3;
+    const correctName = countryNamesES[skippedCountry.ISO_A3] || skippedCountry.ISO_A3;
     showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
 
-    // UPDATE map colors to show the skipped country as completed
+    // 3. Update map colors to show the skipped country as "completed" (dark green)
     globe.polygonCapColor(d => {
         const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
         return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
     });
 
+    // 4. Find polygon and move camera
     const targetPolygon = geoJsonData.features.find(
-        f => (f.properties.ISO_A3 || f.properties.ADM0_A3) === targetCountry.ISO_A3
+        f => (f.properties.ISO_A3 || f.properties.ADM0_A3) === skippedCountry.ISO_A3
     );
 
     if (targetPolygon) {
         const { lat, lng } = globe.polygonCentroid(targetPolygon);
         globe.pointOfView({ lat, lng, altitude: 1.5 }, 1000);
-        // We don't need highlightCountry(targetPolygon) because the color is already set
     }
 
+    // 5. Load next game. loadNewGame() will assign a new targetCountry.
     setTimeout(() => {
         hideMessage();
         globe.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, 1000);
         loadNewGame();
-    }, 3000);
+    }, 3000); // 3-second delay to read the answer
 }
 
 function showMessage(text, isCorrect) {
