@@ -210,8 +210,10 @@ function handleSkip() {
     );
 
     if (targetPolygon) {
-        const { lat, lng } = globe.polygonCentroid(targetPolygon);
-        globe.pointOfView({ lat, lng, altitude: 1.5 }, 1000);
+        const centroid = getFeatureCentroid(targetPolygon);
+        if (centroid) {
+            globe.pointOfView({ ...centroid, altitude: 1.5 }, 1000);
+        }
     }
 
     // 5. Load next game. loadNewGame() will assign a new targetCountry.
@@ -220,6 +222,52 @@ function handleSkip() {
         globe.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, 1000);
         loadNewGame();
     }, 3000); // 3-second delay to read the answer
+}
+
+function getFeatureCentroid(feature) {
+    if (!feature) return null;
+
+    const props = feature.properties || {};
+    const labelLng = typeof props.LABEL_X === 'number' ? props.LABEL_X : null;
+    const labelLat = typeof props.LABEL_Y === 'number' ? props.LABEL_Y : null;
+
+    if (labelLat !== null && labelLng !== null) {
+        return { lat: labelLat, lng: labelLng };
+    }
+
+    const geometry = feature.geometry;
+    if (!geometry) return null;
+
+    let sumLat = 0;
+    let sumLng = 0;
+    let count = 0;
+
+    const accumulatePoint = point => {
+        if (!Array.isArray(point) || point.length < 2) return;
+        const [lng, lat] = point;
+        if (typeof lat !== 'number' || typeof lng !== 'number') return;
+        sumLat += lat;
+        sumLng += lng;
+        count += 1;
+    };
+
+    const handlePolygon = polygon => {
+        if (!Array.isArray(polygon)) return;
+        polygon.forEach(ring => {
+            if (!Array.isArray(ring)) return;
+            ring.forEach(accumulatePoint);
+        });
+    };
+
+    if (geometry.type === 'Polygon') {
+        handlePolygon(geometry.coordinates);
+    } else if (geometry.type === 'MultiPolygon') {
+        geometry.coordinates.forEach(handlePolygon);
+    }
+
+    if (count === 0) return null;
+
+    return { lat: sumLat / count, lng: sumLng / count };
 }
 
 function showMessage(text, isCorrect) {
