@@ -272,5 +272,213 @@
       "También posee islas en el Golfo de Guinea.",
       "Tiene clima tropical ecuatorial con mucha lluvia."
     ]
+  },
+  {
+    "ISO_A3": "USA",
+    "clues_es": [
+      "Capital: Washington D.C.",
+      "Idioma principal: Inglés",
+      "Moneda: Dólar estadounidense",
+      "Está en América del Norte, entre Canadá y México.",
+      "Limita con los océanos Atlántico y Pacífico."
+    ]
+  },
+  {
+    "ISO_A3": "CAN",
+    "clues_es": [
+      "Capital: Ottawa",
+      "Idiomas oficiales: Inglés y Francés",
+      "Moneda: Dólar canadiense",
+      "Está en América del Norte.",
+      "Está al norte de Estados Unidos."
+    ]
+  },
+  {
+    "ISO_A3": "BRA",
+    "clues_es": [
+      "Capital: Brasilia",
+      "Idioma oficial: Portugués",
+      "Moneda: Real brasileño",
+      "Es el país más grande de Sudamérica.",
+      "Cubre gran parte de la selva amazónica."
+    ]
+  },
+  {
+    "ISO_A3": "GBR",
+    "clues_es": [
+      "Capital: Londres",
+      "Idioma oficial: Inglés",
+      "Moneda: Libra esterlina",
+      "Es un archipiélago de islas en Europa Occidental.",
+      "Está al noroeste de Francia."
+    ]
+  },
+  {
+    "ISO_A3": "FRA",
+    "clues_es": [
+      "Capital: París",
+      "Idioma oficial: Francés",
+      "Moneda: Euro",
+      "Está en Europa Occidental.",
+      "Está al norte de España y al este de Alemania."
+    ]
+  },
+  {
+    "ISO_A3": "DEU",
+    "clues_es": [
+      "Capital: Berlín",
+      "Idioma oficial: Alemán",
+      "Moneda: Euro",
+      "Está en el centro de Europa.",
+      "Limita con 9 países, incluyendo Francia y Polonia."
+    ]
+  },
+  {
+    "ISO_A3": "ITA",
+    "clues_es": [
+      "Capital: Roma",
+      "Idioma oficial: Italiano",
+      "Moneda: Euro",
+      "Tiene una distintiva forma de bota.",
+      "Es una península en el Mar Mediterráneo."
+    ]
+  },
+  {
+    "ISO_A3": "RUS",
+    "clues_es": [
+      "Capital: Moscú",
+      "Idioma oficial: Ruso",
+      "Moneda: Rublo ruso",
+      "Es el país más grande del mundo.",
+      "Se extiende por Europa del Este y el norte de Asia."
+    ]
+  },
+  {
+    "ISO_A3": "CHN",
+    "clues_es": [
+      "Capital: Pekín (Beijing)",
+      "Idioma oficial: Chino mandarín",
+      "Moneda: Yuan (Renminbi)",
+      "Está en Asia Oriental.",
+      "Es uno de los países más poblados del mundo."
+    ]
+  },
+  {
+    "ISO_A3": "JPN",
+    "clues_es": [
+      "Capital: Tokio",
+      "Idioma oficial: Japonés",
+      "Moneda: Yen",
+      "Es un archipiélago de islas en Asia Oriental.",
+      "Está al este de China y las Coreas."
+    ]
+  },
+  {
+    "ISO_A3": "IND",
+    "clues_es": [
+      "Capital: Nueva Delhi",
+      "Idiomas oficiales: Hindi e Inglés",
+      "Moneda: Rupia india",
+      "Está en el sur de Asia.",
+      "Es una gran península que se adentra en el Océano Índico."
+    ]
+  },
+  {
+    "ISO_A3": "AUS",
+    "clues_es": [
+      "Capital: Canberra",
+      "Idioma oficial: Inglés",
+      "Moneda: Dólar australiano",
+      "Es un país que ocupa un continente entero.",
+      "Está en Oceanía, rodeado por los océanos Índico y Pacífico."
+    ]
+  },
+  {
+    "ISO_A3": "ZAF",
+    "clues_es": [
+      "Capital: Pretoria (administrativa)",
+      "Tiene 11 idiomas oficiales (incluyendo Zulú, Xhosa, Inglés).",
+      "Moneda: Rand",
+      "Está en el extremo sur de África."
+    ]
+  },
+  {
+    "ISO_A3": "EGY",
+    "clues_es": [
+      "Capital: El Cairo",
+      "Idioma oficial: Árabe",
+      "Moneda: Libra egipcia",
+      "Está en el noreste de África.",
+      "Es famoso por sus pirámides y el río Nilo."
+    ]
+  },
+  {
+    "ISO_A3": "SAU",
+    "clues_es": [
+      "Capital: Riad",
+      "Idioma oficial: Árabe",
+      "Moneda: Riyal saudí",
+      "Ocupa la mayor parte de la Península Arábiga.",
+      "Limita con el Mar Rojo y el Golfo Pérsico."
+    ]
+  },
+  {
+    "ISO_A3": "TUR",
+    "clues_es": [
+      "Capital: Ankara",
+      "Idioma oficial: Turco",
+      "Moneda: Lira turca",
+      "Es un país transcontinental.",
+      "Está ubicado entre Europa del Este y Asia Occidental."
+    ]
+  },
+  {
+    "ISO_A3": "KOR",
+    "clues_es": [
+      "Capital: Seúl",
+      "Idioma oficial: Coreano",
+      "Moneda: Won surcoreano",
+      "Está en la parte sur de la Península de Corea, en Asia Oriental."
+    ]
+  },
+  {
+    "ISO_A3": "NGA",
+    "clues_es": [
+      "Capital: Abuya",
+      "Idioma oficial: Inglés",
+      "Moneda: Naira",
+      "Está en África Occidental.",
+      "Es el país más poblado de África."
+    ]
+  },
+  {
+    "ISO_A3": "IDN",
+    "clues_es": [
+      "Capital: Yakarta",
+      "Idioma oficial: Indonesio",
+      "Moneda: Rupia indonesia",
+      "Es el archipiélago más grande del mundo.",
+      "Está en el Sudeste Asiático, entre los océanos Índico y Pacífico."
+    ]
+  },
+  {
+    "ISO_A3": "CHE",
+    "clues_es": [
+      "Capital: Berna",
+      "Idiomas oficiales: Alemán, Francés, Italiano, Romanche",
+      "Moneda: Franco suizo",
+      "Es un país sin salida al mar en Europa Central.",
+      "Es famoso por los Alpes y su neutralidad."
+    ]
+  },
+  {
+    "ISO_A3": "NLD",
+    "clues_es": [
+      "Capital: Ámsterdam",
+      "Idioma oficial: Neerlandés (Holandés)",
+      "Moneda: Euro",
+      "Está en el noroeste de Europa.",
+      "Es conocido por sus canales y molinos de viento."
+    ]
   }
 ]
