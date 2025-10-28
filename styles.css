@@ -129,22 +129,29 @@ body {
     box-shadow: var(--glow-accent);
 }
 
-#score-box {
+#score-panel {
     position: absolute;
     top: 30px;
     right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    min-width: 180px;
+    z-index: 100;
+}
+
+#score-box {
     background: var(--glass-bg);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 25px;
     text-align: center;
-    min-width: 180px;
     box-shadow: var(--shadow-xl);
     transform: translateY(-20px);
     opacity: 0;
     animation: slideInRight 0.8s ease-out forwards;
-    z-index: 100;
 }
 
 #score-box h3 {
@@ -438,9 +445,9 @@ body {
         max-width: calc(100vw - 40px);
     }
 
-    #score-box {
+    #score-panel {
         right: 20px;
-        min-width: 120px;
+        min-width: 140px;
     }
 
     .message {
@@ -452,26 +459,29 @@ body {
     }
 }
 
-/* --- New Game Button Style --- */
 #new-game-btn {
-    position: absolute;
-    top: 155px; /* Positioned below the score box */
-    right: 20px;
-
-    background-color: #4CAF50; /* Green */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 14px 20px;
+    width: 100%;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    font-weight: bold;
-    opacity: 0.9;
-
-    /* Use the same width as the score box */
-    min-width: 150px;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+    box-shadow: var(--shadow-xl);
+    text-transform: uppercase;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #new-game-btn:hover {
-    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-accent);
+}
+
+#new-game-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
 }
