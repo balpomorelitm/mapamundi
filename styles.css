@@ -1,105 +1,198 @@
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: rgba(20, 20, 40, 0.9);
+    --accent-color: #64ffda;
+    --secondary-accent: #ff6b9d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --success-color: #00e676;
+    --error-color: #ff5722;
+    --warning-color: #ffc107;
+    --cosmic-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --space-gradient: linear-gradient(-45deg, #0b021d, #2a044a, #032030, #1d0322);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.9);
+    --glow-accent: 0 0 30px rgba(100, 255, 218, 0.3);
+    --glow-secondary: 0 0 30px rgba(255, 107, 157, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.2s ease-out;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-    /* Animated Nebula Background */
-    background: linear-gradient(
-        -45deg, 
-        #0b021d, /* Deep space blue */
-        #2a044a, /* Purple */
-        #032030, /* Dark teal */
-        #1d0322  /* Magenta/Dark red */
-    );
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--space-gradient);
     background-size: 400% 400%;
-    animation: gradient-flow 30s ease infinite; /* 30s duration */
-    
+    animation: cosmic-flow 20s ease infinite;
+    color: var(--text-primary);
     overflow: hidden;
+    position: relative;
+    height: 100vh;
 }
 
 #globeViz {
     width: 100vw;
     height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 #clue-box {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    backdrop-filter: blur(10px);
+    top: 30px;
+    left: 30px;
+    width: 400px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: slideInLeft 0.8s ease-out forwards;
+    z-index: 100;
+}
+
+#clue-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--cosmic-gradient);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0.3;
+    animation: pulse 3s ease-in-out infinite;
 }
 
 #clue-box h2 {
-    margin: 0 0 15px 0;
-    color: #667eea;
     font-size: 24px;
+    font-weight: 700;
+    background: var(--cosmic-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: textGlow 2s ease-in-out infinite alternate;
 }
 
 #clue-box p {
-    margin: 10px 0;
-    color: #333;
+    color: var(--text-secondary);
     font-size: 16px;
     line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 #clue-box .label {
-    font-weight: bold;
-    color: #764ba2;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+#clue-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+#clue-list li {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--accent-color);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    transform: translateX(-20px);
+    opacity: 0;
+    animation: slideInListItem 0.6s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+#clue-list li:nth-child(1) { animation-delay: 0.1s; }
+#clue-list li:nth-child(2) { animation-delay: 0.2s; }
+#clue-list li:nth-child(3) { animation-delay: 0.3s; }
+#clue-list li:nth-child(4) { animation-delay: 0.4s; }
+
+#clue-list li:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateX(5px);
+    box-shadow: var(--glow-accent);
 }
 
 #score-box {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    top: 30px;
+    right: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
     text-align: center;
-    min-width: 150px;
+    min-width: 180px;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards;
+    z-index: 100;
 }
 
 #score-box h3 {
-    margin: 0 0 10px 0;
-    color: #667eea;
-    font-size: 20px;
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 #score {
-    font-size: 32px;
-    font-weight: bold;
-    color: #764ba2;
+    font-size: 48px;
+    font-weight: 800;
+    background: var(--cosmic-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: scoreGlow 2s ease-in-out infinite alternate;
 }
 
 .message {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.98);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px) saturate(200%);
+    border: 2px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 40px 60px;
     text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 700;
     z-index: 1000;
     display: none;
+    box-shadow: var(--shadow-xl);
+    animation: messagePopIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 .message.correct {
-    color: #4CAF50;
-    border: 3px solid #4CAF50;
+    color: var(--success-color);
+    border-color: var(--success-color);
+    box-shadow: var(--shadow-xl), 0 0 50px rgba(0, 230, 118, 0.4);
 }
 
 .message.incorrect {
-    color: #f44336;
-    border: 3px solid #f44336;
+    color: var(--error-color);
+    border-color: var(--error-color);
+    box-shadow: var(--shadow-xl), 0 0 50px rgba(255, 87, 34, 0.4);
 }
 
 #loading {
@@ -107,44 +200,105 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    font-size: 24px;
     text-align: center;
+    z-index: 1000;
 }
 
-/* Estilos para el botón "Pasar" */
+#loading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 20px auto;
+    border: 4px solid rgba(100, 255, 218, 0.3);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.game-button,
+#next-clue-btn,
 #skip-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
     width: 100%;
-    opacity: 0.8;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#next-clue-btn {
+    background: var(--cosmic-gradient);
+    color: #ffffff;
+    box-shadow: var(--glow-accent);
+}
+
+#next-clue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-accent);
+}
+
+#next-clue-btn:active {
+    transform: translateY(0);
+}
+
+#skip-btn {
+    background: linear-gradient(135deg, var(--error-color), #d32f2f);
+    color: #ffffff;
+    box-shadow: var(--glow-secondary);
 }
 
 #skip-btn:hover {
-    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-secondary);
 }
 
-/* Ambos botones ocupan el ancho completo */
+.game-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.game-button:active::before {
+    width: 300px;
+    height: 300px;
+}
+
 #clue-box button {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
 }
 
 /* Style for the flag clue */
 .clue-flag {
-    font-size: 48px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 64px;
     line-height: 1;
-    background-size: contain;
-    background-position: 50%;
-    background-repeat: no-repeat;
+    text-align: center;
+    margin: 15px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 2px solid var(--glass-border);
+    box-shadow: inset 0 0 20px rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.clue-flag:hover {
+    transform: scale(1.05);
+    box-shadow: inset 0 0 30px rgba(100, 255, 218, 0.2), var(--glow-accent);
 }
 
 /* --- New Starfield Styles --- */
@@ -154,22 +308,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     width: 100%;
     height: 100%;
-    display: block;
-    
-    /* Make stars sit behind the globe and UI */
-    z-index: -1; 
-    
-    /* Makes them ignore mouse clicks */
-    pointer-events: none; 
-
-    /* The 'move-stars' animation will be defined next */
-    animation-name: move-stars;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    z-index: -1;
+    pointer-events: none;
+    animation: drift linear infinite;
 }
 
 /* * We create stars by using a single 1px or 2px transparent div 
@@ -178,56 +321,134 @@ body {
 
 /* Small, distant stars (slowest) */
 #stars-small {
-    background: transparent;
-    animation-duration: 150s; /* Slowest */
-    /* A 1x1 pixel with many shadows */
-    background-image: radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
-                      radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
-                      radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(1px 1px at 160px 120px, #ddd, rgba(0,0,0,0));
-    background-size: 200px 200px; /* Tile the star pattern */
+    background: 
+        radial-gradient(1px 1px at 100px 150px, var(--accent-color), transparent),
+        radial-gradient(1px 1px at 200px 90px, #ffffff, transparent),
+        radial-gradient(1px 1px at 300px 240px, var(--secondary-accent), transparent),
+        radial-gradient(1px 1px at 450px 180px, #ffffff, transparent),
+        radial-gradient(1px 1px at 600px 120px, var(--accent-color), transparent);
+    background-size: 700px 350px;
+    animation-duration: 200s;
+    opacity: 0.6;
 }
 
 /* Medium stars (faster) */
 #stars-medium {
-    background: transparent;
-    animation-duration: 100s; /* Medium speed */
-    /* A 2x2 pixel with many shadows */
-    background-image: radial-gradient(2px 2px at 30px 50px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(2px 2px at 80px 80px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(2px 2px at 120px 190px, #eee, rgba(0,0,0,0)),
-                      radial-gradient(2px 2px at 170px 100px, #fff, rgba(0,0,0,0));
-    background-size: 250px 250px; /* Tile the star pattern */
+    background: 
+        radial-gradient(2px 2px at 150px 200px, #ffffff, transparent),
+        radial-gradient(2px 2px at 350px 100px, var(--accent-color), transparent),
+        radial-gradient(2px 2px at 500px 300px, var(--secondary-accent), transparent);
+    background-size: 650px 400px;
+    animation-duration: 120s;
+    opacity: 0.8;
 }
 
 /* Large, close stars (fastest) */
 #stars-large {
-    background: transparent;
-    animation-duration: 50s; /* Fastest */
-    /* A 3x3 pixel with a few shadows */
-    background-image: radial-gradient(3px 3px at 50px 150px, #fff, rgba(0,0,0,0)),
-                      radial-gradient(3px 3px at 100px 250px, #eee, rgba(0,0,0,0));
-    background-size: 300px 300px; /* Tile the star pattern */
+    background: 
+        radial-gradient(3px 3px at 200px 250px, #ffffff, transparent),
+        radial-gradient(4px 4px at 400px 150px, var(--accent-color), transparent);
+    background-size: 800px 500px;
+    animation-duration: 80s;
+    opacity: 0.9;
 }
 
 /* --- New Animation Keyframes --- */
 
 /* Animation for the "nebula" gradient flow */
-@keyframes gradient-flow {
-    0% { background-position: 0% 50%; }
+@keyframes cosmic-flow {
+    0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
-/* Animation for the star movement (parallax) */
-@keyframes move-stars {
-    from {
-        transform: translateY(0px);
+@keyframes drift {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-100vh) translateX(10px); }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100px) translateY(-20px);
+        opacity: 0;
     }
-    to {
-        transform: translateY(-200px); /* Moves stars up */
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100px) translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInListItem {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 20px rgba(100, 255, 218, 0.5); }
+    100% { text-shadow: 0 0 30px rgba(100, 255, 218, 0.8); }
+}
+
+@keyframes scoreGlow {
+    0% { text-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+    100% { text-shadow: 0 0 30px rgba(118, 75, 162, 0.8); }
+}
+
+@keyframes messagePopIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    #clue-box {
+        left: 20px;
+        right: 20px;
+        width: auto;
+        max-width: calc(100vw - 40px);
+    }
+
+    #score-box {
+        right: 20px;
+        min-width: 120px;
+    }
+
+    .message {
+        left: 20px;
+        right: 20px;
+        transform: translateY(-50%);
+        font-size: 24px;
+        padding: 30px;
     }
 }
 
