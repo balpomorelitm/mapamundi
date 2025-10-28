@@ -4,6 +4,10 @@ let score = 0;
 let countriesData = [];
 let geoJsonData = null;
 
+// NEW VARIABLES for game state
+let availableCountries = []; // Countries we can still pick from
+let completedCountries = new Set(); // ISO codes of countries already guessed
+
 // Variables para el sistema de pistas progresivas
 let currentClues = [];
 let clueIndex = 0;
@@ -69,6 +73,7 @@ async function loadGameData() {
     try {
         const response = await fetch('data_v2.json');
         countriesData = await response.json();
+        availableCountries = [...countriesData]; // Initialize the available list
         console.log('Cargados', countriesData.length, 'datos de países (v2)');
     } catch (error) {
         console.error('Error cargando data_v2.json:', error);
@@ -113,7 +118,10 @@ async function initGlobe() {
         .showAtmosphere(false) // Desactivar atmósfera para mejor rendimiento
         .polygonsData(geoJsonData.features)
         .polygonAltitude(0.01) // Elevación mínima (MÁS RÁPIDO)
-        .polygonCapColor('rgba(200, 200, 200, 0.8)')
+        .polygonCapColor(d => {
+            const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+            return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
+        })
         .polygonSideColor(() => 'rgba(0, 100, 0, 0.1)')
         .polygonStrokeColor(() => '#333')
         // NOMBRES EN ESPAÑOL
@@ -151,7 +159,15 @@ function handleCountryClick(polygon, event, coords) {
         score += currentRoundPoints;
         document.getElementById('score').textContent = score;
 
-        highlightCountry(polygon);
+        // ADD to completed list
+        completedCountries.add(targetCountry.ISO_A3);
+
+        // UPDATE map colors to show temporary green highlight
+        globe.polygonCapColor(d => {
+            const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+            if (iso === targetCountry.ISO_A3) return '#4CAF50'; // Highlight correct
+            return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
+        });
 
         setTimeout(() => {
             hideMessage();
@@ -164,14 +180,6 @@ function handleCountryClick(polygon, event, coords) {
     }
 }
 
-// Resaltar país (simplificado)
-function highlightCountry(polygon) {
-    globe.polygonCapColor(d => d === polygon ? '#4CAF50' : 'rgba(200, 200, 200, 0.8)');
-    setTimeout(() => {
-        globe.polygonCapColor('rgba(200, 200, 200, 0.8)');
-    }, 1800);
-}
-
 // Manejar botón de pasar (mostrar respuesta)
 function handleSkip() {
     if (!targetCountry) return;
@@ -179,8 +187,17 @@ function handleSkip() {
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = true;
 
+    // ADD skipped country to completed list
+    completedCountries.add(targetCountry.ISO_A3);
+
     const correctName = countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3;
     showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
+
+    // UPDATE map colors to show the skipped country as completed
+    globe.polygonCapColor(d => {
+        const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+        return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
+    });
 
     const targetPolygon = geoJsonData.features.find(
         f => (f.properties.ISO_A3 || f.properties.ADM0_A3) === targetCountry.ISO_A3
@@ -189,7 +206,7 @@ function handleSkip() {
     if (targetPolygon) {
         const { lat, lon } = globe.polygonCentroid(targetPolygon);
         globe.pointOfView({ lat: lat, lng: lon, altitude: 1.5 }, 1000);
-        highlightCountry(targetPolygon);
+        // We don't need highlightCountry(targetPolygon) because the color is already set
     }
 
     setTimeout(() => {
@@ -242,8 +259,23 @@ function showNextClue() {
 }
 
 function loadNewGame() {
-    if (countriesData.length === 0) return;
 
+    // 1. Reset map colors from any temporary highlights
+    globe.polygonCapColor(d => {
+        const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+        return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
+    });
+
+    // 2. Check for GAME OVER
+    if (availableCountries.length === 0) {
+        if (countriesData.length > 0) { // Check that game loaded at least once
+            showMessage('¡Juego completado! Has adivinado todos los países.', true);
+            document.getElementById('clue-box').style.display = 'none';
+        }
+        return; // Stop the game
+    }
+
+    // 3. Reset round variables
     currentRoundPoints = 100;
     clueIndex = 0;
     currentClues = [];
@@ -258,14 +290,16 @@ function loadNewGame() {
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = false;
 
-    const randomIndex = Math.floor(Math.random() * countriesData.length);
-    targetCountry = countriesData[randomIndex];
+    // 4. Pick a new country from AVAILABLE list and REMOVE it
+    const randomIndex = Math.floor(Math.random() * availableCountries.length);
+    targetCountry = availableCountries.splice(randomIndex, 1)[0]; // Pulls *and removes*
 
+    // 5. Load clues for the new country
     currentClues = [...targetCountry.clues_es].sort(() => Math.random() - 0.5);
-
     showNextClue();
 
     console.log('Nuevo país:', countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3);
+    console.log('Países restantes:', availableCountries.length);
 }
 
 window.addEventListener('load', initGlobe);
