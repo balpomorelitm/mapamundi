@@ -70,6 +70,77 @@ const countryNamesES = {
     'WLF': 'Wallis y Futuna', 'YEM': 'Yemen', 'DJI': 'Yibuti', 'ZMB': 'Zambia', 'ZWE': 'Zimbabue'
 };
 
+// Fallback por nombre en inglés para países cuyos códigos ISO no coinciden con el GeoJSON
+const fallbackCountryNamesByEnglish = {
+    'France': 'Francia',
+    'French Republic': 'Francia',
+    'Norway': 'Noruega',
+    'Kingdom of Norway': 'Noruega'
+};
+
+// Seguimiento para evitar mensajes repetidos en la consola
+const missingIsoWarnings = new Set();
+
+function getCountryNameES(props = {}, isoOverride = null) {
+    const isoCandidates = [
+        isoOverride,
+        props.ISO_A3,
+        props.ADM0_A3,
+        props.ISO_A3_EH,
+        props.ADM0_A3_US,
+        props.WB_A3,
+        props.SOV_A3,
+        props.iso_a3,
+        props.adm0_a3
+    ].filter(Boolean);
+
+    let lastIsoWithoutTranslation = null;
+
+    for (const iso of isoCandidates) {
+        const normalizedIso = typeof iso === 'string'
+            ? iso.trim().toUpperCase()
+            : String(iso).trim().toUpperCase();
+        if (!normalizedIso) continue;
+        const spanishName = countryNamesES[normalizedIso];
+        if (spanishName) {
+            return spanishName;
+        }
+        lastIsoWithoutTranslation = normalizedIso;
+    }
+
+    const englishNameCandidates = [
+        props.NAME,
+        props.NAME_LONG,
+        props.ADMIN,
+        props.SOVEREIGNT,
+        props.BRK_NAME
+    ].filter(Boolean);
+
+    for (const candidate of englishNameCandidates) {
+        const trimmed = candidate.trim();
+        if (!trimmed) continue;
+        const spanishName = fallbackCountryNamesByEnglish[trimmed];
+        if (spanishName) {
+            return spanishName;
+        }
+    }
+
+    if (lastIsoWithoutTranslation && !missingIsoWarnings.has(lastIsoWithoutTranslation)) {
+        console.warn(`No se encontró traducción en español para el código ISO ${lastIsoWithoutTranslation}.`);
+        missingIsoWarnings.add(lastIsoWithoutTranslation);
+    }
+
+    if (englishNameCandidates.length > 0) {
+        return englishNameCandidates[0];
+    }
+
+    if (isoCandidates.length > 0) {
+        return isoCandidates[0];
+    }
+
+    return 'País desconocido';
+}
+
 // Cargar datos del juego
 async function loadGameData() {
     try {
@@ -132,8 +203,7 @@ async function initGlobe() {
         .polygonStrokeColor(() => '#333')
         // NOMBRES EN ESPAÑOL
         .polygonLabel(({ properties: d }) => {
-            const iso = d.ISO_A3 || d.ADM0_A3;
-            const nombreES = countryNamesES[iso] || d.NAME || d.ADMIN || 'País desconocido';
+            const nombreES = getCountryNameES(d);
             return `
                 <div style="background: rgba(0,0,0,0.85); padding: 8px 12px; border-radius: 4px; color: white; font-size: 14px;">
                     <b>${nombreES}</b>
@@ -180,7 +250,7 @@ function handleCountryClick(polygon, event, coords) {
             loadNewGame();
         }, 2000); // Incrementado tiempo de espera para leer el mensaje
     } else {
-        const clickedName = countryNamesES[clickedISO] || polygon.properties.NAME || 'ese país';
+        const clickedName = getCountryNameES(polygon.properties, clickedISO) || 'ese país';
         showMessage(`Incorrecto. Ese es ${clickedName}. ¡Inténtalo de nuevo! 🤔`, false);
         setTimeout(hideMessage, 2000);
     }
@@ -199,7 +269,7 @@ function handleSkip() {
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = true;
 
-    const correctName = countryNamesES[skippedCountry.ISO_A3] || skippedCountry.ISO_A3;
+    const correctName = getCountryNameES(skippedCountry, skippedCountry.ISO_A3);
     showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
 
     // 3. Update map colors to show the skipped country as a temporary reveal
@@ -431,7 +501,7 @@ function loadNewGame() {
     // --- End of New Logic ---
     showNextClue();
 
-    console.log('Nuevo país:', countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3);
+    console.log('Nuevo país:', getCountryNameES(targetCountry, targetCountry.ISO_A3));
     console.log('Países restantes:', availableCountries.length);
 }
 
