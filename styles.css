@@ -230,3 +230,27 @@ body {
         transform: translateY(-200px); /* Moves stars up */
     }
 }
+
+/* --- New Game Button Style --- */
+#new-game-btn {
+    position: absolute;
+    top: 155px; /* Positioned below the score box */
+    right: 20px;
+
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.9;
+
+    /* Use the same width as the score box */
+    min-width: 150px;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+#new-game-btn:hover {
+    opacity: 1;
+}

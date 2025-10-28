@@ -112,6 +112,7 @@ async function initGlobe() {
 
     document.getElementById('next-clue-btn').addEventListener('click', showNextClue);
     document.getElementById('skip-btn').addEventListener('click', handleSkip);
+    document.getElementById('new-game-btn').addEventListener('click', handleNewGameClick);
 
     globe = Globe()
         // Texturas más ligeras o color sólido
@@ -233,6 +234,31 @@ function handleSkip() {
         globe.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, 1000);
         loadNewGame();
     }, 3000); // 3-second delay to read the answer
+}
+
+// --- NEW FUNCTION TO RESET THE GAME ---
+function handleNewGameClick() {
+    // 1. Stop any active timers
+    if (typeof stopRoundTimer === 'function') {
+        stopRoundTimer();
+    }
+
+    // 2. Reset score
+    score = 0;
+    document.getElementById('score').textContent = score;
+
+    // 3. Reset country tracking
+    completedCountries.clear();
+    availableCountries = [...countriesData]; // Refill the available list
+
+    // 4. Reset the map colors
+    globe.polygonCapColor('rgba(200, 200, 200, 0.8)');
+
+    // 5. Ensure clue box is visible (if game was completed)
+    document.getElementById('clue-box').style.display = 'block';
+
+    // 6. Start the first round
+    loadNewGame();
 }
 
 function getFeatureCentroid(feature) {
