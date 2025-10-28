@@ -9,27 +9,59 @@ let currentClues = [];
 let clueIndex = 0;
 let currentRoundPoints = 100;
 
-// Mapeo de códigos ISO a nombres en español
+// Mapeo de códigos ISO a nombres en español (lista ampliada)
 const countryNamesES = {
-    'ESP': 'España', 'MEX': 'México', 'GTM': 'Guatemala', 'HND': 'Honduras',
-    'SLV': 'El Salvador', 'NIC': 'Nicaragua', 'CRI': 'Costa Rica', 'PAN': 'Panamá',
-    'CUB': 'Cuba', 'DOM': 'República Dominicana', 'VEN': 'Venezuela', 'COL': 'Colombia',
-    'ECU': 'Ecuador', 'PER': 'Perú', 'BOL': 'Bolivia', 'CHL': 'Chile',
-    'ARG': 'Argentina', 'URY': 'Uruguay', 'PRY': 'Paraguay', 'GNQ': 'Guinea Ecuatorial',
-    'USA': 'Estados Unidos', 'CAN': 'Canadá', 'BRA': 'Brasil', 'FRA': 'Francia',
-    'ITA': 'Italia', 'DEU': 'Alemania', 'GBR': 'Reino Unido', 'PRT': 'Portugal',
-    'CHN': 'China', 'JPN': 'Japón', 'IND': 'India', 'RUS': 'Rusia',
-    'AUS': 'Australia', 'NZL': 'Nueva Zelanda', 'EGY': 'Egipto', 'ZAF': 'Sudáfrica',
-    'NGA': 'Nigeria', 'KEN': 'Kenia', 'MAR': 'Marruecos', 'DZA': 'Argelia',
-    'TUN': 'Túnez', 'LBY': 'Libia', 'ETH': 'Etiopía', 'TZA': 'Tanzania',
-    'SAU': 'Arabia Saudita', 'IRN': 'Irán', 'IRQ': 'Irak', 'TUR': 'Turquía',
-    'GRC': 'Grecia', 'POL': 'Polonia', 'UKR': 'Ucrania', 'ROU': 'Rumania',
-    'NLD': 'Países Bajos', 'BEL': 'Bélgica', 'CHE': 'Suiza', 'AUT': 'Austria',
-    'SWE': 'Suecia', 'NOR': 'Noruega', 'DNK': 'Dinamarca', 'FIN': 'Finlandia',
-    'THA': 'Tailandia', 'VNM': 'Vietnam', 'MYS': 'Malasia', 'PHL': 'Filipinas',
-    'IDN': 'Indonesia', 'KOR': 'Corea del Sur', 'PRK': 'Corea del Norte',
-    'PAK': 'Pakistán', 'BGD': 'Bangladés', 'AFG': 'Afganistán', 'NPL': 'Nepal',
-    'LKA': 'Sri Lanka', 'MMR': 'Myanmar', 'KHM': 'Camboya', 'LAO': 'Laos'
+    'AFG': 'Afganistán', 'ALA': 'Åland', 'ALB': 'Albania', 'DEU': 'Alemania', 'AND': 'Andorra',
+    'AGO': 'Angola', 'AIA': 'Anguila', 'ATA': 'Antártida', 'ATG': 'Antigua y Barbuda', 'SAU': 'Arabia Saudita',
+    'DZA': 'Argelia', 'ARG': 'Argentina', 'ARM': 'Armenia', 'ABW': 'Aruba', 'AUS': 'Australia',
+    'AUT': 'Austria', 'AZE': 'Azerbaiyán', 'BHS': 'Bahamas', 'BHR': 'Baréin', 'BGD': 'Bangladés',
+    'BRB': 'Barbados', 'BEL': 'Bélgica', 'BLZ': 'Belice', 'BEN': 'Benín', 'BMU': 'Bermudas',
+    'BLR': 'Bielorrusia', 'BOL': 'Bolivia', 'BIH': 'Bosnia y Herzegovina', 'BWA': 'Botsuana', 'BRA': 'Brasil',
+    'BRN': 'Brunéi', 'BGR': 'Bulgaria', 'BFA': 'Burkina Faso', 'BDI': 'Burundi', 'BTN': 'Bután',
+    'CPV': 'Cabo Verde', 'KHM': 'Camboya', 'CMR': 'Camerún', 'CAN': 'Canadá', 'QAT': 'Catar', 'TCD': 'Chad',
+    'CHL': 'Chile', 'CHN': 'China', 'CYP': 'Chipre', 'VAT': 'Ciudad del Vaticano', 'COL': 'Colombia',
+    'COM': 'Comoras', 'PRK': 'Corea del Norte', 'KOR': 'Corea del Sur', 'CIV': 'Costa de Marfil',
+    'CRI': 'Costa Rica', 'HRV': 'Croacia', 'CUB': 'Cuba', 'CUW': 'Curazao', 'DNK': 'Dinamarca',
+    'DMA': 'Dominica', 'ECU': 'Ecuador', 'EGY': 'Egipto', 'SLV': 'El Salvador', 'ARE': 'Emiratos Árabes Unidos',
+    'ERI': 'Eritrea', 'SVK': 'Eslovaquia', 'SVN': 'Eslovenia', 'ESP': 'España', 'USA': 'Estados Unidos',
+    'EST': 'Estonia', 'ETH': 'Etiopía', 'PHL': 'Filipinas', 'FIN': 'Finlandia', 'FJI': 'Fiyi',
+    'FRA': 'Francia', 'GAB': 'Gabón', 'GMB': 'Gambia', 'GEO': 'Georgia', 'GHA': 'Ghana',
+    'GIB': 'Gibraltar', 'GRD': 'Granada', 'GRC': 'Grecia', 'GRL': 'Groenlandia', 'GLP': 'Guadalupe',
+    'GUM': 'Guam', 'GTM': 'Guatemala', 'GUF': 'Guayana Francesa', 'GGY': 'Guernsey', 'GIN': 'Guinea',
+    'GNB': 'Guinea-Bisáu', 'GNQ': 'Guinea Ecuatorial', 'GUY': 'Guyana', 'HTI': 'Haití', 'HND': 'Honduras',
+    'HKG': 'Hong Kong', 'HUN': 'Hungría', 'IND': 'India', 'IDN': 'Indonesia', 'IRN': 'Irán', 'IRQ': 'Irak',
+    'IRL': 'Irlanda', 'ISL': 'Islandia', 'IMN': 'Isla de Man', 'CXR': 'Isla de Navidad', 'NFK': 'Isla Norfolk',
+    'SLE': 'Sierra Leona', 'CYM': 'Islas Caimán', 'CCK': 'Islas Cocos', 'COK': 'Islas Cook',
+    'FRO': 'Islas Feroe', 'SGS': 'Islas Georgias del Sur y Sandwich del Sur', 'HMD': 'Islas Heard y McDonald',
+    'FLK': 'Islas Malvinas', 'MNP': 'Islas Marianas del Norte', 'MHL': 'Islas Marshall', 'PCN': 'Islas Pitcairn',
+    'SLB': 'Islas Salomón', 'TCA': 'Islas Turcas y Caicos', 'VGB': 'Islas Vírgenes Británicas',
+    'VIR': 'Islas Vírgenes de los Estados Unidos', 'ISR': 'Israel', 'ITA': 'Italia', 'JAM': 'Jamaica',
+    'JPN': 'Japón', 'JEY': 'Jersey', 'JOR': 'Jordania', 'KAZ': 'Kazajistán', 'KEN': 'Kenia',
+    'KGZ': 'Kirguistán', 'KIR': 'Kiribati', 'KWT': 'Kuwait', 'LAO': 'Laos', 'LSO': 'Lesoto',
+    'LVA': 'Letonia', 'LBN': 'Líbano', 'LBR': 'Liberia', 'LBY': 'Libia', 'LIE': 'Liechtenstein',
+    'LTU': 'Lituania', 'LUX': 'Luxemburgo', 'MAC': 'Macao', 'MKD': 'Macedonia del Norte', 'MDG': 'Madagascar',
+    'MYS': 'Malasia', 'MWI': 'Malaui', 'MDV': 'Maldivas', 'MLI': 'Malí', 'MLT': 'Malta', 'MAR': 'Marruecos',
+    'MTQ': 'Martinica', 'MUS': 'Mauricio', 'MRT': 'Mauritania', 'MYT': 'Mayotte', 'MEX': 'México',
+    'FSM': 'Micronesia', 'MDA': 'Moldavia', 'MCO': 'Mónaco', 'MNG': 'Mongolia', 'MNE': 'Montenegro',
+    'MSR': 'Montserrat', 'MOZ': 'Mozambique', 'MMR': 'Myanmar (Birmania)', 'NAM': 'Namibia', 'NRU': 'Nauru',
+    'NPL': 'Nepal', 'NIC': 'Nicaragua', 'NER': 'Níger', 'NGA': 'Nigeria', 'NIU': 'Niue', 'NOR': 'Noruega',
+    'NCL': 'Nueva Caledonia', 'NZL': 'Nueva Zelanda', 'OMN': 'Omán', 'NLD': 'Países Bajos', 'PAK': 'Pakistán',
+    'PLW': 'Palaos', 'PSE': 'Palestina', 'PAN': 'Panamá', 'PNG': 'Papúa Nueva Guinea', 'PRY': 'Paraguay',
+    'PER': 'Perú', 'PYF': 'Polinesia Francesa', 'POL': 'Polonia', 'PRT': 'Portugal', 'PRI': 'Puerto Rico',
+    'GBR': 'Reino Unido', 'CAF': 'República Centroafricana', 'CZE': 'República Checa', 'COG': 'República del Congo',
+    'COD': 'República Democrática del Congo', 'DOM': 'República Dominicana', 'REU': 'Reunión', 'RWA': 'Ruanda',
+    'ROU': 'Rumania', 'RUS': 'Rusia', 'ESH': 'Sáhara Occidental', 'WSM': 'Samoa', 'ASM': 'Samoa Americana',
+    'BLM': 'San Bartolomé', 'KNA': 'San Cristóbal y Nieves', 'SMR': 'San Marino', 'MAF': 'San Martín (Francia)',
+    'SXM': 'San Martín (Países Bajos)', 'SPM': 'San Pedro y Miquelón', 'VCT': 'San Vicente y las Granadinas',
+    'SHN': 'Santa Elena', 'LCA': 'Santa Lucía', 'STP': 'Santo Tomé y Príncipe', 'SEN': 'Senegal',
+    'SRB': 'Serbia', 'SYC': 'Seychelles', 'SGP': 'Singapur', 'SYR': 'Siria', 'SOM': 'Somalia',
+    'LKA': 'Sri Lanka', 'SWZ': 'Suazilandia (Esuatini)', 'ZAF': 'Sudáfrica', 'SDN': 'Sudán',
+    'SSD': 'Sudán del Sur', 'SWE': 'Suecia', 'CHE': 'Suiza', 'SUR': 'Surinam', 'SJM': 'Svalbard y Jan Mayen',
+    'THA': 'Tailandia', 'TWN': 'Taiwán', 'TZA': 'Tanzania', 'TJK': 'Tayikistán', 'TLS': 'Timor Oriental',
+    'TGO': 'Togo', 'TKL': 'Tokelau', 'TON': 'Tonga', 'TTO': 'Trinidad y Tobago', 'TUN': 'Túnez',
+    'TKM': 'Turkmenistán', 'TUR': 'Turquía', 'TUV': 'Tuvalu', 'UKR': 'Ucrania', 'UGA': 'Uganda',
+    'URY': 'Uruguay', 'UZB': 'Uzbekistán', 'VUT': 'Vanuatu', 'VEN': 'Venezuela', 'VNM': 'Vietnam',
+    'WLF': 'Wallis y Futuna', 'YEM': 'Yemen', 'DJI': 'Yibuti', 'ZMB': 'Zambia', 'ZWE': 'Zimbabue'
 };
 
 // Cargar datos del juego
@@ -72,6 +104,7 @@ async function initGlobe() {
     document.getElementById('score-box').style.display = 'block';
 
     document.getElementById('next-clue-btn').addEventListener('click', showNextClue);
+    document.getElementById('skip-btn').addEventListener('click', handleSkip);
 
     globe = Globe()
         // Texturas más ligeras o color sólido
@@ -86,7 +119,7 @@ async function initGlobe() {
         // NOMBRES EN ESPAÑOL
         .polygonLabel(({ properties: d }) => {
             const iso = d.ISO_A3 || d.ADM0_A3;
-            const nombreES = countryNamesES[iso] || d.NAME || d.ADMIN || 'País';
+            const nombreES = countryNamesES[iso] || d.NAME || d.ADMIN || 'País desconocido';
             return `
                 <div style="background: rgba(0,0,0,0.85); padding: 8px 12px; border-radius: 4px; color: white; font-size: 14px;">
                     <b>${nombreES}</b>
@@ -139,6 +172,33 @@ function highlightCountry(polygon) {
     }, 1800);
 }
 
+// Manejar botón de pasar (mostrar respuesta)
+function handleSkip() {
+    if (!targetCountry) return;
+
+    const skipButton = document.getElementById('skip-btn');
+    skipButton.disabled = true;
+
+    const correctName = countryNamesES[targetCountry.ISO_A3] || targetCountry.ISO_A3;
+    showMessage(`Respuesta: ${correctName}. ¡Intenta con el siguiente!`, false);
+
+    const targetPolygon = geoJsonData.features.find(
+        f => (f.properties.ISO_A3 || f.properties.ADM0_A3) === targetCountry.ISO_A3
+    );
+
+    if (targetPolygon) {
+        const { lat, lon } = globe.polygonCentroid(targetPolygon);
+        globe.pointOfView({ lat: lat, lng: lon, altitude: 1.5 }, 1000);
+        highlightCountry(targetPolygon);
+    }
+
+    setTimeout(() => {
+        hideMessage();
+        globe.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, 1000);
+        loadNewGame();
+    }, 3000);
+}
+
 function showMessage(text, isCorrect) {
     const messageEl = document.getElementById('message');
     messageEl.textContent = text;
@@ -186,6 +246,9 @@ function loadNewGame() {
     const button = document.getElementById('next-clue-btn');
     button.disabled = false;
     button.textContent = 'Pedir Pista (coste: -15%)';
+
+    const skipButton = document.getElementById('skip-btn');
+    skipButton.disabled = false;
 
     const randomIndex = Math.floor(Math.random() * countriesData.length);
     targetCountry = countriesData[randomIndex];

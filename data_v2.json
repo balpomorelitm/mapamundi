@@ -2,30 +2,38 @@
   {
     "ISO_A3": "ESP",
     "clues_es": [
-      "Capital: Madrid",
-      "Su moneda es el euro y es famoso por la paella.",
-      "Tiene dos idiomas cooficiales: catalán, gallego, euskera y español.",
+      "Capital: Madrid.",
+      "Su moneda es el euro.",
+      "Es famoso por la paella.",
+      "Tiene varios idiomas cooficiales además del español.",
+      "El catalán, el gallego y el euskera son lenguas cooficiales.",
       "La Sagrada Familia en Barcelona es su lugar turístico más visitado.",
-      "Produce aceite de oliva y vino de alta calidad.",
-      "Tiene clima mediterráneo en la costa y continental en el interior."
+      "Produce aceite de oliva de alta calidad.",
+      "También produce vino de alta calidad.",
+      "Tiene clima mediterráneo en la costa.",
+      "Tiene clima continental en el interior."
     ]
   },
   {
     "ISO_A3": "MEX",
     "clues_es": [
-      "Capital: Ciudad de México",
-      "Su moneda es el peso mexicano y es famoso por los tacos.",
+      "Capital: Ciudad de México.",
+      "Su moneda es el peso mexicano.",
+      "Es famoso por los tacos.",
       "Es el país hispanohablante con más población del mundo.",
       "El volcán Popocatépetl es uno de sus volcanes más famosos.",
       "Chichén Itzá es una de las maravillas del mundo moderno.",
-      "Produce aguacate, tequila y chocolate."
+      "Produce aguacate para exportación.",
+      "Produce tequila reconocido mundialmente.",
+      "Produce chocolate con tradición ancestral."
     ]
   },
   {
     "ISO_A3": "GTM",
     "clues_es": [
-      "Capital: Ciudad de Guatemala",
-      "Su moneda es el quetzal, como el ave nacional.",
+      "Capital: Ciudad de Guatemala.",
+      "Su moneda es el quetzal.",
+      "El quetzal es también el ave nacional.",
       "Tiene más de 20 lenguas indígenas además del español.",
       "Tikal es una antigua ciudad maya muy famosa.",
       "El Lago de Atitlán es uno de los lagos más bellos del mundo.",
@@ -35,8 +43,10 @@
   {
     "ISO_A3": "HND",
     "clues_es": [
-      "Capital: Tegucigalpa",
-      "Su moneda es la lempira y produce café y bananos.",
+      "Capital: Tegucigalpa.",
+      "Su moneda es la lempira.",
+      "Produce café para exportación.",
+      "Produce bananos en grandes cantidades.",
       "Las ruinas mayas de Copán son patrimonio de la humanidad.",
       "Tiene hermosas playas en el Caribe como Roatán.",
       "El clima es tropical en las costas.",
@@ -46,19 +56,22 @@
   {
     "ISO_A3": "SLV",
     "clues_es": [
-      "Capital: San Salvador",
+      "Capital: San Salvador.",
       "Usa el dólar estadounidense como moneda oficial.",
       "Es el país más pequeño de Centroamérica.",
       "El volcán de Izalco se llama el faro del Pacífico.",
       "Las pupusas son su comida tradicional más famosa.",
-      "Produce café y azúcar para exportar."
+      "Produce café para exportación.",
+      "Produce azúcar para exportación."
     ]
   },
   {
     "ISO_A3": "NIC",
     "clues_es": [
-      "Capital: Managua",
-      "Su moneda es el córdoba y produce café y tabaco.",
+      "Capital: Managua.",
+      "Su moneda es el córdoba.",
+      "Produce café para exportar.",
+      "Produce tabaco reconocido internacionalmente.",
       "El Lago de Nicaragua es el lago más grande de Centroamérica.",
       "Tiene muchos volcanes activos como el Masaya.",
       "La ciudad colonial de Granada es muy turística.",
@@ -68,52 +81,65 @@
   {
     "ISO_A3": "CRI",
     "clues_es": [
-      "Capital: San José",
-      "Su moneda es el colón y no tiene ejército desde 1948.",
+      "Capital: San José.",
+      "Su moneda es el colón costarricense.",
+      "No tiene ejército desde 1948.",
       "Es líder mundial en turismo ecológico y sostenible.",
       "El Parque Nacional Volcán Arenal es muy visitado.",
-      "Produce piña, café y banano de exportación.",
-      "Tiene costas en el Océano Pacífico y el Mar Caribe."
+      "Produce piña de exportación.",
+      "Produce café de alta calidad.",
+      "Produce banano para mercados internacionales.",
+      "Tiene costas en el Océano Pacífico.",
+      "Tiene costas en el Mar Caribe."
     ]
   },
   {
     "ISO_A3": "PAN",
     "clues_es": [
-      "Capital: Ciudad de Panamá",
-      "Su moneda es el balboa y el dólar estadounidense.",
+      "Capital: Ciudad de Panamá.",
+      "Su moneda es el balboa.",
+      "También usa el dólar estadounidense como moneda.",
       "El Canal de Panamá conecta el océano Atlántico y Pacífico.",
       "Se puede ver el amanecer en un océano y el atardecer en otro.",
       "El Casco Viejo es patrimonio de la humanidad.",
-      "Exporta banano, café y productos del mar."
+      "Exporta banano a muchos países.",
+      "Exporta café de alta calidad.",
+      "Exporta productos del mar."
     ]
   },
   {
     "ISO_A3": "CUB",
     "clues_es": [
-      "Capital: La Habana",
-      "Su moneda es el peso cubano y produce tabaco y ron.",
+      "Capital: La Habana.",
+      "Su moneda es el peso cubano.",
+      "Produce tabaco reconocido mundialmente.",
+      "Produce ron emblemático.",
       "Los puros cubanos son famosos en todo el mundo.",
       "Es la isla más grande del Caribe.",
       "El Valle de Viñales tiene paisajes espectaculares.",
-      "Tiene playas hermosas de arena blanca y clima tropical."
+      "Tiene playas hermosas de arena blanca.",
+      "Tiene un clima tropical durante todo el año."
     ]
   },
   {
     "ISO_A3": "DOM",
     "clues_es": [
-      "Capital: Santo Domingo",
-      "Su moneda es el peso dominicano y produce cacao.",
+      "Capital: Santo Domingo.",
+      "Su moneda es el peso dominicano.",
+      "Produce cacao de calidad para exportación.",
       "Santo Domingo es la ciudad más antigua de América.",
       "Punta Cana es uno de los destinos turísticos más populares.",
-      "El merengue y la bachata son bailes tradicionales del país.",
+      "El merengue es un baile tradicional del país.",
+      "La bachata es otro baile típico de su cultura.",
       "Comparte la isla La Española con Haití."
     ]
   },
   {
     "ISO_A3": "VEN",
     "clues_es": [
-      "Capital: Caracas",
-      "Su moneda es el bolívar y tiene las mayores reservas de petróleo.",
+      "Capital: Caracas.",
+      "Su moneda es el bolívar.",
+      "Tiene las mayores reservas de petróleo del mundo.",
       "El Salto Ángel es la cascada más alta del mundo.",
       "El Relámpago del Catatumbo es un fenómeno único en el mundo.",
       "Las arepas son su comida tradicional más popular.",
@@ -123,19 +149,23 @@
   {
     "ISO_A3": "COL",
     "clues_es": [
-      "Capital: Bogotá",
-      "Su moneda es el peso colombiano y produce café de calidad.",
+      "Capital: Bogotá.",
+      "Su moneda es el peso colombiano.",
+      "Produce café de calidad mundial.",
       "Es el único país sudamericano con costas en dos océanos.",
       "Cartagena de Indias es una ciudad colonial muy turística.",
-      "Produce esmeraldas, flores y banano para exportar.",
+      "Produce esmeraldas reconocidas internacionalmente.",
+      "Exporta flores a numerosos países.",
+      "Produce banano para exportación.",
       "El río Magdalena es el más importante del país."
     ]
   },
   {
     "ISO_A3": "ECU",
     "clues_es": [
-      "Capital: Quito",
-      "Su moneda es el dólar estadounidense y exporta banano.",
+      "Capital: Quito.",
+      "Su moneda es el dólar estadounidense.",
+      "Exporta banano a todo el mundo.",
       "Las Islas Galápagos son famosas por su biodiversidad única.",
       "Fue el primer país en dar derechos constitucionales a la naturaleza.",
       "La línea del ecuador cruza el país, de ahí su nombre.",
@@ -145,52 +175,69 @@
   {
     "ISO_A3": "PER",
     "clues_es": [
-      "Capital: Lima",
-      "Su moneda es el sol y es famoso por Machu Picchu.",
+      "Capital: Lima.",
+      "Su moneda es el sol.",
+      "Es famoso por Machu Picchu.",
       "La ciudadela inca de Machu Picchu es maravilla del mundo.",
       "El Lago Titicaca es el lago navegable más alto del mundo.",
       "El ceviche es su plato nacional más conocido.",
-      "Tiene tres regiones: costa, sierra y selva amazónica."
+      "Tiene tres regiones naturales bien definidas.",
+      "Incluye costa, sierra y selva amazónica."
     ]
   },
   {
     "ISO_A3": "BOL",
     "clues_es": [
-      "Capital: Sucre",
-      "Su moneda es el boliviano y tiene dos capitales oficiales.",
+      "Capital: Sucre.",
+      "La Paz es la sede de gobierno del país.",
+      "Su moneda es el boliviano.",
+      "Tiene dos capitales oficiales reconocidas.",
       "El Salar de Uyuni es el desierto de sal más grande del mundo.",
       "Es el país más plano de la Tierra según estudios.",
       "Tiene las mayores reservas de litio del mundo.",
-      "El quechua y el aimara son idiomas oficiales además del español."
+      "El quechua es idioma oficial además del español.",
+      "El aimara es idioma oficial además del español."
     ]
   },
   {
     "ISO_A3": "CHL",
     "clues_es": [
-      "Capital: Santiago",
-      "Su moneda es el peso chileno y es el país más largo del mundo.",
+      "Capital: Santiago.",
+      "Su moneda es el peso chileno.",
+      "Es el país más largo del mundo.",
       "El desierto de Atacama es el más árido del planeta.",
       "La Isla de Pascua y sus moais son un gran misterio.",
-      "Produce cobre, vino y salmón para exportar.",
-      "Tiene glaciares, desiertos, bosques y playas en su territorio."
+      "Produce cobre para exportación.",
+      "Produce vino reconocido internacionalmente.",
+      "Produce salmón en grandes cantidades.",
+      "Tiene glaciares en el sur de su territorio.",
+      "Cuenta con desiertos extensos en el norte.",
+      "Posee bosques templados en el sur.",
+      "Tiene playas a lo largo del océano Pacífico."
     ]
   },
   {
     "ISO_A3": "ARG",
     "clues_es": [
-      "Capital: Buenos Aires",
-      "Su moneda es el peso argentino y es famoso por el tango.",
+      "Capital: Buenos Aires.",
+      "Su moneda es el peso argentino.",
+      "Es famoso por el tango.",
       "Las Cataratas del Iguazú son una de las más impresionantes del mundo.",
       "El Aconcagua es la montaña más alta de América.",
-      "Produce carne de res, vino y soja de calidad mundial.",
-      "La Patagonia argentina tiene glaciares y paisajes espectaculares."
+      "Produce carne de res de alta calidad.",
+      "Produce vino reconocido internacionalmente.",
+      "Produce soja en grandes volúmenes.",
+      "La Patagonia argentina tiene glaciares espectaculares.",
+      "La Patagonia argentina ofrece paisajes naturales únicos."
     ]
   },
   {
     "ISO_A3": "URY",
     "clues_es": [
-      "Capital: Montevideo",
-      "Su moneda es el peso uruguayo y produce carne y lana.",
+      "Capital: Montevideo.",
+      "Su moneda es el peso uruguayo.",
+      "Produce carne de excelente calidad.",
+      "Produce lana para exportación.",
       "Punta del Este es un destino turístico famoso de playas.",
       "Fue sede del primer Mundial de Fútbol en 1930.",
       "El río Uruguay separa el país de Argentina.",
@@ -200,22 +247,29 @@
   {
     "ISO_A3": "PRY",
     "clues_es": [
-      "Capital: Asunción",
-      "Su moneda es el guaraní y tiene dos idiomas oficiales.",
-      "El español y el guaraní son idiomas oficiales del país.",
+      "Capital: Asunción.",
+      "Su moneda es el guaraní.",
+      "Tiene dos idiomas oficiales reconocidos.",
+      "El español es idioma oficial del país.",
+      "El guaraní es idioma oficial del país.",
       "Es un país sin costa marítima en el centro de Sudamérica.",
       "Las represas de Itaipú generan mucha energía hidroeléctrica.",
-      "Produce soja, carne y algodón para exportar."
+      "Produce soja para exportación.",
+      "Produce carne de res de calidad.",
+      "Produce algodón como cultivo importante."
     ]
   },
   {
     "ISO_A3": "GNQ",
     "clues_es": [
-      "Capital: Malabo",
-      "Su moneda es el franco CFA y está en África Central.",
+      "Capital: Malabo.",
+      "Su moneda es el franco CFA.",
+      "Está situada en África Central.",
       "Es el único país africano donde el español es idioma oficial.",
-      "Produce petróleo y cacao para exportar.",
-      "Tiene una parte continental e islas en el Golfo de Guinea.",
+      "Produce petróleo para su economía.",
+      "Produce cacao para exportación.",
+      "Tiene una parte continental en el continente africano.",
+      "También posee islas en el Golfo de Guinea.",
       "Tiene clima tropical ecuatorial con mucha lluvia."
     ]
   }
