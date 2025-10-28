@@ -42,19 +42,13 @@ async function loadGameData() {
 // Cargar datos GeoJSON
 async function loadGeoJSON() {
     try {
-        const response = await fetch('ne_110m_admin_0_countries.geojson');
+        // Force loading the lightweight 110m version from CDN
+        const response = await fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson');
         geoJsonData = await response.json();
-        console.log('GeoJSON cargado con', geoJsonData.features.length, 'países');
+        console.log('GeoJSON 110m cargado desde CDN:', geoJsonData.features.length, 'países');
     } catch (error) {
-        console.error('Error cargando GeoJSON local:', error);
-        try {
-            const response = await fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson');
-            geoJsonData = await response.json();
-            console.log('GeoJSON cargado desde CDN');
-        } catch (cdnError) {
-            console.error('Error cargando desde CDN:', cdnError);
-            alert('Error: No se pudo cargar el archivo GeoJSON.');
-        }
+        console.error('Error cargando GeoJSON 110m desde CDN:', error);
+        alert('Error: No se pudo cargar el archivo GeoJSON.');
     }
 }
 
@@ -74,13 +68,12 @@ async function initGlobe() {
 
     globe = Globe()
         // Texturas más ligeras o color sólido
-        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-        // .globeImageUrl(null) // Descomentar para globo sin textura (MÁS RÁPIDO)
+        .globeImageUrl(null)
         // .backgroundColor('rgba(0,0,0,0.8)') // Fondo simple sin estrellas
         .showAtmosphere(false) // Desactivar atmósfera para mejor rendimiento
         .polygonsData(geoJsonData.features)
         .polygonAltitude(0.01) // Elevación mínima (MÁS RÁPIDO)
-        .polygonCapColor(d => d === globe.hoverPolygon ? 'steelblue' : 'rgba(200, 200, 200, 0.8)')
+        .polygonCapColor('rgba(200, 200, 200, 0.8)')
         .polygonSideColor(() => 'rgba(0, 100, 0, 0.1)')
         .polygonStrokeColor(() => '#333')
         // NOMBRES EN ESPAÑOL
@@ -94,7 +87,6 @@ async function initGlobe() {
             `;
         })
         .onPolygonClick(handleCountryClick)
-        .onPolygonHover(hoverPolygon => globe.hoverPolygon = hoverPolygon)
         (document.getElementById('globeViz'));
 
     // Vista inicial optimizada
@@ -136,7 +128,7 @@ function handleCountryClick(polygon, event, coords) {
 function highlightCountry(polygon) {
     globe.polygonCapColor(d => d === polygon ? '#4CAF50' : 'rgba(200, 200, 200, 0.8)');
     setTimeout(() => {
-        globe.polygonCapColor(d => d === globe.hoverPolygon ? 'steelblue' : 'rgba(200, 200, 200, 0.8)');
+        globe.polygonCapColor('rgba(200, 200, 200, 0.8)');
     }, 1800);
 }
 
