@@ -4,6 +4,80 @@ let score = 0;
 let countriesData = [];
 let geoJsonData = null;
 
+function normalizeISO3(value) {
+    if (value === undefined || value === null) return null;
+    const normalized = String(value).trim().toUpperCase();
+    if (!normalized || normalized === '-99') return null;
+    return normalized;
+}
+
+const isoEquivalences = new Map([
+    ['FXX', 'FRA'],
+    ['SJM', 'NOR'],
+    ['BVT', 'NOR']
+]);
+
+function resolveISO3(value) {
+    const normalized = normalizeISO3(value);
+    if (!normalized) return null;
+    return isoEquivalences.get(normalized) || normalized;
+}
+
+function getISO3(props = {}) {
+    const candidates = [
+        props.ISO_A3,
+        props.ADM0_A3,
+        props.ISO_A3_EH,
+        props.ADM0_A3_US,
+        props.WB_A3,
+        props.SOV_A3,
+        props.iso_a3,
+        props.adm0_a3
+    ];
+
+    for (const candidate of candidates) {
+        const resolved = resolveISO3(candidate);
+        if (resolved) {
+            return resolved;
+        }
+    }
+
+    return null;
+}
+
+function getCountryISO(country = {}) {
+    const candidates = [
+        country.ISO_A3,
+        country.iso_a3,
+        country.ADM0_A3,
+        country.adm0_a3,
+        country.ISO_A3_EH,
+        country.iso_a3_eh,
+        country.ADM0_A3_US,
+        country.WB_A3,
+        country.wb_a3,
+        country.SOV_A3,
+        country.sov_a3
+    ];
+
+    for (const candidate of candidates) {
+        const resolved = resolveISO3(candidate);
+        if (resolved) {
+            return resolved;
+        }
+    }
+
+    return null;
+}
+
+function isoEqual(a, b) {
+    const isoA = resolveISO3(a);
+    const isoB = resolveISO3(b);
+
+    if (!isoA || !isoB) return false;
+    return isoA === isoB;
+}
+
 // NEW VARIABLES for game state
 let availableCountries = []; // Countries we can still pick from
 let completedCountries = new Set(); // ISO codes of countries already guessed
@@ -229,7 +303,7 @@ async function initGlobe() {
         .polygonsData(geoJsonData.features)
         .polygonAltitude(0.01) // Elevación mínima (MÁS RÁPIDO)
         .polygonCapColor(d => {
-            const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+            const iso = getISO3(d.properties);
             if (recentlyRevealedISO && iso === recentlyRevealedISO) {
                 return 'rgba(180, 50, 50, 0.7)';
             }
@@ -264,9 +338,10 @@ async function initGlobe() {
 async function handleCountryClick(polygon, event, coords) {
     if (!targetCountry) return;
 
-    const clickedISO = polygon.properties.ISO_A3 || polygon.properties.ADM0_A3;
+    const clickedISO = getISO3(polygon.properties);
+    const targetISO = getCountryISO(targetCountry);
 
-    if (clickedISO === targetCountry.ISO_A3) {
+    if (isoEqual(clickedISO, targetISO)) {
         stopRoundTimer();
 
         showMessage(`¡Correcto! You won ${currentRoundPoints} points`, true);
@@ -275,13 +350,15 @@ async function handleCountryClick(polygon, event, coords) {
         document.getElementById('score').textContent = score;
 
         // ADD to completed list
-        completedCountries.add(targetCountry.ISO_A3);
+        if (targetISO) {
+            completedCountries.add(targetISO);
+        }
 
         const fillHex = await getFlagCenterColorHex(targetCountry.ISO_A2);
 
         globe.polygonCapColor(d => {
-            const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
-            if (iso === targetCountry.ISO_A3) return fillHex;
+            const iso = getISO3(d.properties);
+            if (isoEqual(iso, targetISO)) return fillHex;
             return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
         });
 
@@ -321,9 +398,10 @@ function handleSkip() {
     showMessage(`ANSWER: ${correctName}. Try again!`, false);
 
     // 3. Update map colors to show the skipped country as a temporary reveal
-    recentlyRevealedISO = skippedCountry.ISO_A3;
+    const skippedISO = getCountryISO(skippedCountry);
+    recentlyRevealedISO = skippedISO;
     globe.polygonCapColor(d => {
-        const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+        const iso = getISO3(d.properties);
         if (recentlyRevealedISO && iso === recentlyRevealedISO) {
             return 'rgba(180, 50, 50, 0.7)';
         }
@@ -332,7 +410,7 @@ function handleSkip() {
 
     // 4. Find polygon and move camera
     const targetPolygon = geoJsonData.features.find(
-        f => (f.properties.ISO_A3 || f.properties.ADM0_A3) === skippedCountry.ISO_A3
+        f => isoEqual(getISO3(f.properties), recentlyRevealedISO)
     );
 
     if (targetPolygon) {
@@ -344,7 +422,7 @@ function handleSkip() {
 
     // Reinsert skipped country so it can appear again later
     availableCountries.push(skippedCountry);
-    lastSkippedISO = skippedCountry.ISO_A3;
+    lastSkippedISO = skippedISO;
 
     // 5. Load next game. loadNewGame() will assign a new targetCountry.
     setTimeout(() => {
@@ -508,7 +586,7 @@ function loadNewGame() {
 
     // 1. Reset map colors from any temporary highlights
     globe.polygonCapColor(d => {
-        const iso = d.properties.ISO_A3 || d.properties.ADM0_A3;
+        const iso = getISO3(d.properties);
         return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
     });
 
@@ -544,7 +622,7 @@ function loadNewGame() {
     while (
         availableCountries.length > 1 &&
         lastSkippedISO &&
-        candidate.ISO_A3 === lastSkippedISO &&
+        isoEqual(getCountryISO(candidate), lastSkippedISO) &&
         attempts < 10
     ) {
         randomIndex = Math.floor(Math.random() * availableCountries.length);
