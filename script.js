@@ -14,6 +14,7 @@ let recentlyRevealedISO = null; // ISO code temporarily highlighted after reveal
 let currentClues = [];
 let clueIndex = 0;
 let currentRoundPoints = 100;
+let roundTimer = null;
 
 // Mapeo de códigos ISO a nombres en español (lista ampliada)
 const countryNamesES = {
@@ -229,8 +230,9 @@ function handleCountryClick(polygon, event, coords) {
     if (!targetCountry) return;
 
     const clickedISO = polygon.properties.ISO_A3 || polygon.properties.ADM0_A3;
-    
+
     if (clickedISO === targetCountry.ISO_A3) {
+        stopRoundTimer();
         showMessage(`¡Correcto! Ganaste ${currentRoundPoints} puntos. 🎉`, true);
         score += currentRoundPoints;
         document.getElementById('score').textContent = score;
@@ -259,6 +261,8 @@ function handleCountryClick(polygon, event, coords) {
 // Manejar botón de pasar (mostrar respuesta)
 function handleSkip() {
     if (!targetCountry) return; // Check if a game is active
+
+    stopRoundTimer();
 
     // 1. Store the country to be skipped and then immediately nullify the global target
     //    THIS IS THE FIX: Clicks on the globe are now disabled.
@@ -305,6 +309,38 @@ function handleSkip() {
         loadNewGame();
     }, 3000); // 3-second delay to read the answer
 }
+
+// --- NEW TIMER FUNCTIONS ---
+
+function stopRoundTimer() {
+    if (roundTimer) {
+        clearInterval(roundTimer);
+        roundTimer = null;
+    }
+}
+
+function startRoundTimer() {
+    stopRoundTimer(); // Clear any old timer
+
+    roundTimer = setInterval(() => {
+        if (targetCountry && currentRoundPoints > 0) {
+            currentRoundPoints -= 3; // Subtract 3 points
+
+            if (currentRoundPoints < 0) {
+                currentRoundPoints = 0;
+            }
+
+            document.getElementById('round-score').textContent = currentRoundPoints;
+
+            if (currentRoundPoints === 0) {
+                stopRoundTimer(); // Stop the timer if points run out
+            }
+        } else {
+            stopRoundTimer(); // Stop if no target (safety check)
+        }
+    }, 1000); // Runs every 1 second
+}
+// --- END OF NEW FUNCTIONS ---
 
 // --- NEW FUNCTION TO RESET THE GAME ---
 function handleNewGameClick() {
@@ -420,6 +456,7 @@ function showNextClue() {
 }
 
 function loadNewGame() {
+    stopRoundTimer();
 
     recentlyRevealedISO = null;
 
@@ -500,6 +537,8 @@ function loadNewGame() {
     if (banderaClue) currentClues.push(banderaClue);
     // --- End of New Logic ---
     showNextClue();
+
+    startRoundTimer();
 
     console.log('Nuevo país:', getCountryNameES(targetCountry, targetCountry.ISO_A3));
     console.log('Países restantes:', availableCountries.length);
