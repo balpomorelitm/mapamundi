@@ -988,26 +988,8 @@ body {
     body {
         height: -webkit-fill-available;
     }
-
+    
     #globeViz {
         height: -webkit-fill-available;
-    }
-}
-
-/* Optimizaciones para etiquetas de países en móvil */
-@media (max-width: 1024px) {
-    /* Mejorar legibilidad de etiquetas en móvil */
-    #globeViz canvas {
-        font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-    }
-}
-
-/* Mejorar rendimiento en dispositivos móviles */
-@media (max-width: 768px) {
-    #globeViz {
-        /* Optimización de rendimiento */
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        will-change: transform;
     }
 }
