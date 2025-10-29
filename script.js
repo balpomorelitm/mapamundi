@@ -164,8 +164,8 @@ function showNameModal(currentScore) {
             <input type="text" id="player-name-input" class="name-input" 
                    placeholder="Escribe tu nombre aquí..." maxlength="30">
             <div class="modal-buttons">
-                <button class="modal-btn save" onclick="savePlayerScore()">💾 Guardar</button>
-                <button class="modal-btn cancel" onclick="closeNameModal()">❌ Cancelar</button>
+                <button class="modal-btn save" onclick="savePlayerScore()">💾 Save</button>
+                <button class="modal-btn cancel" onclick="closeNameModal()">❌ Cancel</button>
             </div>
         </div>
     `;
@@ -865,7 +865,7 @@ function showNextClue() {
     if (clueIndex >= currentClues.length) {
         const button = document.getElementById('next-clue-btn');
         button.disabled = true;
-        button.textContent = 'No hay más pistas';
+        button.textContent = 'No more hints';
     }
 }
 
@@ -912,7 +912,7 @@ async function loadNewGame() {
 
     const button = document.getElementById('next-clue-btn');
     button.disabled = false;
-    button.textContent = 'Pedir Pista (coste: -5)';
+    button.textContent = 'Get Hint (cost: -5)';
 
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = false;
