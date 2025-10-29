@@ -8,6 +8,53 @@ let targetCountry = null;
 let score = 0;
 let countriesData = [];
 let geoJsonData = null;
+let titleShown = false;
+
+// Mostrar título de entrada
+function showGameTitle() {
+    if (titleShown) return;
+
+    const titleElement = document.getElementById('game-title');
+    if (!titleElement) return;
+
+    titleElement.classList.add('entering');
+    titleElement.style.display = 'flex';
+    titleShown = true;
+
+    setTimeout(() => {
+        hideMainTitle();
+    }, 3000);
+}
+
+// Ocultar título principal y posicionarlo arriba
+function hideMainTitle() {
+    const titleElement = document.getElementById('game-title');
+    if (!titleElement) return;
+
+    titleElement.classList.remove('entering');
+    titleElement.classList.add('positioned');
+
+    setTimeout(() => {
+        titleElement.style.position = 'absolute';
+    }, 500);
+}
+
+// Ocultar completamente el título (para pantalla completa del juego)
+function hideGameTitle() {
+    const titleElement = document.getElementById('game-title');
+    if (!titleElement) return;
+
+    titleElement.classList.add('hidden');
+}
+
+// Mostrar el título en posición fija
+function showPositionedTitle() {
+    const titleElement = document.getElementById('game-title');
+    if (!titleElement) return;
+
+    titleElement.classList.remove('hidden');
+    titleElement.classList.add('positioned');
+}
 
 // Guardar nuevo record
 async function saveScore(playerName, scoreValue) {
@@ -514,6 +561,8 @@ async function loadGeoJSON() {
 
 // Inicializar el globo (VERSIÓN OPTIMIZADA)
 async function initGlobe() {
+    showGameTitle();
+
     await loadGeoJSON();
     await loadGameData();
 
