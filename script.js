@@ -9,91 +9,6 @@ let score = 0;
 let countriesData = [];
 let geoJsonData = null;
 
-// Variables para etiquetas móviles
-let isMobileDevice = false;
-let countryLabels = [];
-
-// Detectar si es dispositivo móvil/tablet
-function detectMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        ('ontouchstart' in window) ||
-        (window.innerWidth <= 1024);
-}
-
-// Función para calcular el tamaño de etiqueta basado en el área del país
-function calculateLabelSize(feature) {
-    if (!feature.geometry) return 8; // Tamaño mínimo
-
-    let area = 0;
-    const geometry = feature.geometry;
-
-    // Estimación simple de área basada en coordenadas
-    const calculatePolygonArea = (coordinates) => {
-        if (!coordinates || !Array.isArray(coordinates)) return 0;
-        let totalArea = 0;
-        coordinates.forEach(ring => {
-            if (ring.length < 3) return;
-            let ringArea = 0;
-            for (let i = 0; i < ring.length - 1; i++) {
-                const [x1, y1] = ring[i];
-                const [x2, y2] = ring[i + 1];
-                ringArea += (x1 * y2 - x2 * y1);
-            }
-            totalArea += Math.abs(ringArea / 2);
-        });
-        return totalArea;
-    };
-
-    if (geometry.type === 'Polygon') {
-        area = calculatePolygonArea(geometry.coordinates);
-    } else if (geometry.type === 'MultiPolygon') {
-        geometry.coordinates.forEach(polygon => {
-            area += calculatePolygonArea(polygon);
-        });
-    }
-
-    // Convertir área a tamaño de fuente (8px mínimo, 16px máximo)
-    const minSize = 8;
-    const maxSize = 16;
-    const normalizedArea = Math.log10(Math.max(area, 0.001)) + 3; // Normalización logarítmica
-    const fontSize = Math.max(minSize, Math.min(maxSize, minSize + (normalizedArea * 2)));
-
-    return Math.round(fontSize);
-}
-
-// Función para generar etiquetas de países para móvil
-function generateCountryLabels() {
-    if (!geoJsonData || !isMobileDevice) return [];
-
-    const labels = [];
-
-    geoJsonData.features.forEach(feature => {
-        const props = feature.properties;
-        if (!props) return;
-
-        const centroid = getFeatureCentroid(feature);
-        if (!centroid) return;
-
-        const countryName = getCountryNameES(props);
-        const fontSize = calculateLabelSize(feature);
-        const iso = getISO3(props);
-
-        // Solo añadir países con nombre válido
-        if (countryName && countryName !== 'País desconocido') {
-            labels.push({
-                lat: centroid.lat,
-                lng: centroid.lng,
-                name: countryName,
-                fontSize: fontSize,
-                iso: iso,
-                feature: feature
-            });
-        }
-    });
-
-    return labels;
-}
-
 // Guardar nuevo record
 async function saveScore(playerName, scoreValue) {
     if (!supabase) {
@@ -597,7 +512,7 @@ async function loadGeoJSON() {
     }
 }
 
-// Inicializar el globo (VERSIÓN OPTIMIZADA CON ETIQUETAS MÓVILES)
+// Inicializar el globo (VERSIÓN OPTIMIZADA)
 async function initGlobe() {
     await loadGeoJSON();
     await loadGameData();
@@ -605,15 +520,6 @@ async function initGlobe() {
     if (!geoJsonData || countriesData.length === 0) {
         document.getElementById('loading').textContent = 'Error al cargar los datos';
         return;
-    }
-
-    // Detectar dispositivo móvil
-    isMobileDevice = detectMobileDevice();
-
-    // Generar etiquetas para móviles
-    if (isMobileDevice) {
-        countryLabels = generateCountryLabels();
-        console.log(`Generadas ${countryLabels.length} etiquetas de países para móvil`);
     }
 
     document.getElementById('loading').style.display = 'none';
@@ -642,11 +548,8 @@ async function initGlobe() {
         })
         .polygonSideColor(() => 'rgba(0, 100, 0, 0.1)')
         .polygonStrokeColor(() => '#333')
-        // NOMBRES EN ESPAÑOL (solo para desktop con hover)
+        // NOMBRES EN ESPAÑOL
         .polygonLabel(({ properties: d }) => {
-            // Solo mostrar labels hover en desktop
-            if (isMobileDevice) return '';
-
             const nombreES = getCountryNameES(d);
             return `
                 <div style="background: rgba(0,0,0,0.85); padding: 8px 12px; border-radius: 4px; color: white; font-size: 14px;">
@@ -654,24 +557,12 @@ async function initGlobe() {
                 </div>
             `;
         })
-        // ETIQUETAS DE TEXTO PARA MÓVILES
-        .labelsData(isMobileDevice ? countryLabels : [])
-        .labelLat('lat')
-        .labelLng('lng')
-        .labelText('name')
-        .labelSize(d => d.fontSize)
-        .labelDotRadius(0) // Sin punto
-        .labelColor(() => 'rgba(255, 255, 255, 0.9)')
-        .labelResolution(isMobileDevice ? 2 : 1) // Mayor resolución en móvil
-        .labelAltitude(0.02) // Ligeramente elevado sobre la superficie
         .onPolygonClick(handleCountryClick)
-        // CLICK EN ETIQUETAS TAMBIÉN (solo móvil)
-        .onLabelClick(isMobileDevice ? handleLabelClick : null)
         (document.getElementById('globeViz'));
 
     // Vista inicial optimizada
     globe.pointOfView({ lat: 20, lng: 0, altitude: 2.5 }, 0);
-
+    
     // Controles más suaves
     globe.controls().enableDamping = true;
     globe.controls().dampingFactor = 0.1;
@@ -708,17 +599,6 @@ async function handleCountryClick(polygon, event, coords) {
             return completedCountries.has(iso) ? 'rgba(0, 100, 0, 0.6)' : 'rgba(200, 200, 200, 0.8)';
         });
 
-        // Actualizar colores de etiquetas en móvil
-        if (isMobileDevice && countryLabels.length > 0) {
-            globe.labelColor(label => {
-                const iso = label.iso;
-                if (isoEqual(iso, targetISO)) {
-                    return 'rgba(255, 100, 100, 1)'; // Rojo para el país correcto
-                }
-                return completedCountries.has(iso) ? 'rgba(100, 255, 100, 0.9)' : 'rgba(255, 255, 255, 0.9)';
-            });
-        }
-
         setTimeout(() => {
             hideMessage();
             loadNewGame();
@@ -728,21 +608,6 @@ async function handleCountryClick(polygon, event, coords) {
 
         penalizeIncorrectAttempt();
         setTimeout(hideMessage, 2000);
-    }
-}
-
-// Manejar clic en etiquetas de países (solo móvil)
-async function handleLabelClick(label, event) {
-    if (!targetCountry || !isMobileDevice) return;
-
-    // Encontrar la feature correspondiente usando el ISO
-    const feature = geoJsonData.features.find(f =>
-        getISO3(f.properties) === label.iso
-    );
-
-    if (feature) {
-        // Simular el click en el polígono
-        await handleCountryClick(feature, event, { lat: label.lat, lng: label.lng });
     }
 }
 
@@ -857,11 +722,6 @@ function handleNewGameClick() {
 
     // 4. Reset the map colors
     globe.polygonCapColor('rgba(200, 200, 200, 0.8)');
-
-    // Reset label colors for mobile
-    if (isMobileDevice && countryLabels.length > 0) {
-        globe.labelColor(() => 'rgba(255, 255, 255, 0.9)');
-    }
 
     // 5. Ensure clue box is visible (if game was completed)
     document.getElementById('clue-box').style.display = 'block';
