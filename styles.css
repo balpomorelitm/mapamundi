@@ -199,6 +199,12 @@ body {
     box-shadow: var(--shadow-xl), 0 0 28px rgba(0, 230, 118, 0.35);
 }
 
+.message.incorrect {
+    color: var(--error-color);
+    border-color: var(--error-color);
+    box-shadow: var(--shadow-xl), 0 0 28px rgba(255, 87, 34, 0.35);
+}
+
 #leaderboard {
     position: absolute;
     top: 50%;
@@ -276,21 +282,6 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-.message.incorrect {
-    color: var(--error-color);
-    border-color: var(--error-color);
-    box-shadow: var(--shadow-xl), 0 0 28px rgba(255, 87, 34, 0.35);
-}
-
-@media (max-width: 768px) {
-  .message {
-    right: 14px;
-    max-width: 260px;
-    min-width: 200px;
-    font-size: 15px;
-  }
-}
-
 #loading {
     position: absolute;
     top: 50%;
@@ -358,7 +349,6 @@ body {
 }
 
 .end-game-button {
-    /* Estilo distintivo - amarillo/naranja */
     background: linear-gradient(135deg, #ff9800, #f57c00);
     color: white;
     box-shadow: 0 0 30px rgba(255, 152, 0, 0.3);
@@ -395,7 +385,6 @@ body {
     width: 100%;
 }
 
-/* Modal para ingresar nombre */
 .name-modal {
     position: absolute;
     top: 50%;
@@ -456,7 +445,6 @@ body {
     color: white;
 }
 
-/* Style for the flag clue */
 .clue-flag {
     font-size: 64px;
     line-height: 1;
@@ -475,9 +463,6 @@ body {
     box-shadow: inset 0 0 30px rgba(100, 255, 218, 0.2), var(--glow-accent);
 }
 
-/* --- New Starfield Styles --- */
-
-/* Base style for all star layers */
 #stars-small, #stars-medium, #stars-large {
     position: absolute;
     top: 0;
@@ -489,11 +474,6 @@ body {
     animation: drift linear infinite;
 }
 
-/* * We create stars by using a single 1px or 2px transparent div 
- * and giving it hundreds of box-shadows.
- */
-
-/* Small, distant stars (slowest) */
 #stars-small {
     background: 
         radial-gradient(1px 1px at 100px 150px, var(--accent-color), transparent),
@@ -506,7 +486,6 @@ body {
     opacity: 0.6;
 }
 
-/* Medium stars (faster) */
 #stars-medium {
     background: 
         radial-gradient(2px 2px at 150px 200px, #ffffff, transparent),
@@ -517,7 +496,6 @@ body {
     opacity: 0.8;
 }
 
-/* Large, close stars (fastest) */
 #stars-large {
     background: 
         radial-gradient(3px 3px at 200px 250px, #ffffff, transparent),
@@ -527,9 +505,34 @@ body {
     opacity: 0.9;
 }
 
-/* --- New Animation Keyframes --- */
+#new-game-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 14px 20px;
+    width: 100%;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: var(--shadow-xl);
+    text-transform: uppercase;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Animation for the "nebula" gradient flow */
+#new-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-accent);
+}
+
+#new-game-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+/* === ANIMACIONES === */
 @keyframes cosmic-flow {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -604,51 +607,389 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
+/* === MEDIA QUERIES PARA MÓVILES === */
+
+/* Tabletas en portrait (768px y menos) */
+@media (max-width: 768px) and (orientation: portrait) {
     #clue-box {
-        left: 20px;
-        right: 20px;
+        top: 15px;
+        left: 15px;
+        right: 15px;
         width: auto;
-        max-width: calc(100vw - 40px);
+        max-width: none;
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    #clue-box h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
     }
 
     #score-panel {
-        right: 20px;
-        min-width: 140px;
+        top: 15px;
+        right: 15px;
+        min-width: 120px;
+    }
+
+    #score-box {
+        padding: 15px;
+    }
+
+    #score-box h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    #score {
+        font-size: 36px;
+    }
+
+    #show-leaderboard-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 14px;
     }
 
     .message {
-        left: 20px;
-        right: 20px;
+        left: 15px;
+        right: 15px;
+        max-width: none;
+        min-width: auto;
+        font-size: 16px;
+        padding: 15px 18px;
+        top: 45%;
         transform: translateY(-50%);
-        font-size: 24px;
-        padding: 30px;
+    }
+
+    .clue-flag {
+        font-size: 48px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    #leaderboard {
+        width: 95%;
+        padding: 20px;
+        max-width: none;
+    }
+
+    .name-modal {
+        width: 90%;
+        min-width: auto;
+        padding: 20px;
     }
 }
 
-#new-game-btn {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    border-radius: 18px;
-    padding: 14px 20px;
-    width: 100%;
-    color: var(--text-primary);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: var(--shadow-xl);
-    text-transform: uppercase;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Móviles en portrait (480px y menos) */
+@media (max-width: 480px) and (orientation: portrait) {
+    /* Layout principal reorganizado para móvil vertical */
+    #clue-box {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        max-height: 60vh;
+        overflow-y: auto;
+        border-radius: 20px 20px 0 0;
+        padding: 20px 20px 30px 20px;
+        z-index: 150;
+        transform: translateY(0);
+        animation: slideInUp 0.8s ease-out forwards;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    #clue-box h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+        position: sticky;
+        top: 0;
+        background: var(--glass-bg);
+        padding-bottom: 10px;
+        z-index: 1;
+    }
+
+    #clue-box p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    #clue-list li {
+        padding: 12px;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    .game-button,
+    #next-clue-btn,
+    #skip-btn,
+    .end-game-button {
+        padding: 12px 16px;
+        font-size: 14px;
+        margin: 6px 0;
+    }
+
+    /* Panel de puntuación reposicionado */
+    #score-panel {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        min-width: auto;
+        z-index: 120;
+    }
+
+    #score-box {
+        flex: 1;
+        max-width: 150px;
+        padding: 12px 16px;
+        min-height: auto;
+    }
+
+    #score-box h3 {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    #score {
+        font-size: 24px;
+    }
+
+    #new-game-btn {
+        flex: 1;
+        padding: 12px 16px;
+        font-size: 14px;
+        max-width: 130px;
+    }
+
+    /* Botón de ranking reposicionado */
+    #show-leaderboard-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        bottom: auto;
+        padding: 8px 12px;
+        font-size: 12px;
+        z-index: 130;
+        border-radius: 8px;
+    }
+
+    /* Mensajes adaptados */
+    .message {
+        position: fixed;
+        top: 50%;
+        left: 15px;
+        right: 15px;
+        transform: translateY(-50%);
+        max-width: none;
+        font-size: 16px;
+        padding: 15px;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    /* Globo ajustado para dar espacio a la interfaz */
+    #globeViz {
+        height: 100vh;
+        padding-bottom: 0;
+    }
+
+    /* Bandera más pequeña en móvil */
+    .clue-flag {
+        font-size: 40px;
+        padding: 12px;
+        margin: 8px 0;
+    }
+
+    /* Modal de nombre adaptado */
+    .name-modal {
+        width: 95%;
+        padding: 18px;
+        border-radius: 15px;
+    }
+
+    .name-input {
+        padding: 12px;
+        font-size: 16px; /* Mantener 16px para evitar zoom en iOS */
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Leaderboard adaptado */
+    #leaderboard {
+        width: 98%;
+        padding: 18px;
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 15px;
+    }
+
+    #leaderboard h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .record-item {
+        padding: 8px;
+        font-size: 14px;
+    }
 }
 
-#new-game-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg), var(--glow-accent);
+/* Muy pequeños (320px y menos) */
+@media (max-width: 320px) and (orientation: portrait) {
+    #clue-box {
+        padding: 15px;
+        max-height: 55vh;
+    }
+
+    #clue-box h2 {
+        font-size: 16px;
+    }
+
+    #score-panel {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+    }
+
+    #score-box {
+        padding: 10px 12px;
+    }
+
+    #score {
+        font-size: 20px;
+    }
+
+    #new-game-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    #show-leaderboard-btn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .clue-flag {
+        font-size: 32px;
+        padding: 10px;
+    }
 }
 
-#new-game-btn:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 4px;
+/* Landscape específico para móviles */
+@media (max-width: 896px) and (orientation: landscape) {
+    #clue-box {
+        position: fixed;
+        left: 15px;
+        top: 15px;
+        bottom: 15px;
+        width: 300px;
+        max-height: none;
+        overflow-y: auto;
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    #clue-box h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    #score-panel {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        flex-direction: column;
+        min-width: 120px;
+    }
+
+    #score-box {
+        padding: 12px;
+    }
+
+    #score {
+        font-size: 28px;
+    }
+
+    #show-leaderboard-btn {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .message {
+        left: 330px;
+        right: 150px;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: none;
+        font-size: 14px;
+    }
+}
+
+/* Animación específica para slide up en móvil */
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Optimizaciones de rendimiento para móviles */
+@media (max-width: 768px) {
+    /* Reducir animaciones complejas en móviles */
+    #stars-small, #stars-medium, #stars-large {
+        animation-duration: 300s;
+    }
+    
+    /* Desactivar algunos efectos pesados en móviles muy pequeños */
+    @media (max-width: 480px) {
+        #stars-medium, #stars-large {
+            display: none;
+        }
+        
+        .clue-flag:hover {
+            transform: none;
+            box-shadow: inset 0 0 20px rgba(100, 255, 218, 0.1);
+        }
+        
+        #clue-list li:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
+
+/* Fix para Safari iOS */
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
+    
+    #globeViz {
+        height: -webkit-fill-available;
+    }
 }
