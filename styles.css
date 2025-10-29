@@ -83,7 +83,7 @@ body {
 
 .title-char,
 .title-space {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
+    font-family: 'Akronim', 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
     font-size: 4rem;
     font-weight: 900;
     background: var(--cosmic-gradient);
@@ -95,6 +95,10 @@ body {
     animation: titleBounce 2s ease-in-out infinite;
     transform-origin: center bottom;
     position: relative;
+}
+
+.title-space {
+    width: 1.5rem;
 }
 
 .title-char:nth-child(1) { animation-delay: 0.1s; }
