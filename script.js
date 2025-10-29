@@ -912,7 +912,7 @@ async function loadNewGame() {
 
     const button = document.getElementById('next-clue-btn');
     button.disabled = false;
-    button.textContent = 'Pedir Pista (coste: -15%)';
+    button.textContent = 'Pedir Pista (coste: -5)';
 
     const skipButton = document.getElementById('skip-btn');
     skipButton.disabled = false;
