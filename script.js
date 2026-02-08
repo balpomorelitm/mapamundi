@@ -1,7 +1,13 @@
-// Configuración de Supabase
-const SUPABASE_URL = 'https://ayyafokliqskiaftcwuo.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5eWFmb2tsaXFza2lhZnRjd3VvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2NjY1OTcsImV4cCI6MjA3NzI0MjU5N30._H90m2Mvh6nSPSljUopNiQ2Yq7xB55osA_6KrVVaGLs';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Protección contra cargas duplicadas del script
+if (window.mapamundiInitialized) {
+    console.warn('script.js ya fue cargado, ignorando carga duplicada');
+} else {
+    window.mapamundiInitialized = true;
+
+// Configuración de Supabase - DESACTIVADO
+// const SUPABASE_URL = 'https://ayyafokliqskiaftcwuo.supabase.co';
+// const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5eWFmb2tsaXFza2lhZnRjd3VvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2NjY1OTcsImV4cCI6MjA3NzI0MjU5N30._H90m2Mvh6nSPSljUopNiQ2Yq7xB55osA_6KrVVaGLs';
+// const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let globe;
 let targetCountry = null;
@@ -56,6 +62,7 @@ function showPositionedTitle() {
     titleElement.classList.add('positioned');
 }
 
+/* LEADERBOARD DESACTIVADO
 // Guardar nuevo record
 async function saveScore(playerName, scoreValue) {
     if (!supabase) {
@@ -151,7 +158,9 @@ async function isTopScore(currentScore) {
     const lowestTopScore = topScores[topScores.length - 1];
     return currentScore > lowestTopScore;
 }
+*/
 
+/* MODALS Y LEADERBOARD DESACTIVADOS
 // Mostrar modal para ingresar nombre
 function showNameModal(currentScore) {
     closeNameModal();
@@ -227,6 +236,11 @@ function closeNameModal() {
     }
 }
 
+// Exponer funciones para onclick en modals dinámicos
+window.savePlayerScore = savePlayerScore;
+window.closeNameModal = closeNameModal;
+*/
+
 // Función principal para terminar partida
 async function handleEndGame() {
     if (!confirm('¿Estás seguro de que quieres terminar la partida?')) {
@@ -242,25 +256,17 @@ async function handleEndGame() {
     if (nextClueBtn) nextClueBtn.disabled = true;
     if (skipBtn) skipBtn.disabled = true;
 
-    const isTop = await isTopScore(score);
+    // Leaderboard desactivado - solo mostrar puntuación final
+    showMessage(
+        `Partida terminada.<br/>Puntuación final: ${score}`,
+        true
+    );
 
-    if (isTop) {
-        showNameModal(score);
-    } else {
-        const topScores = await getTop15Scores();
-        const minTopScore = topScores.length >= 15 ? topScores[14] : 0;
-
-        showMessage(
-            `Partida terminada.<br/>Puntuación: ${score}<br/>(Necesitas ${minTopScore + 1}+ para el top 15)`,
-            false
-        );
-
-        setTimeout(() => {
-            if (confirm('¿Quieres jugar otra vez?')) {
-                handleNewGameClick();
-            }
-        }, 3000);
-    }
+    setTimeout(() => {
+        if (confirm('¿Quieres jugar otra vez?')) {
+            handleNewGameClick();
+        }
+    }, 3000);
 
     const clueBox = document.getElementById('clue-box');
     if (clueBox) {
@@ -273,6 +279,7 @@ async function handleEndGame() {
     }
 }
 
+/* FUNCIONES DE VISUALIZACIÓN DE LEADERBOARD DESACTIVADAS
 // Mostrar/ocultar leaderboard
 function toggleLeaderboard() {
     const leaderboard = document.getElementById('leaderboard');
@@ -286,6 +293,11 @@ async function showLeaderboardPanel() {
     await displayLeaderboard();
     leaderboard.style.display = 'block';
 }
+
+// Exponer funciones para onclick en HTML
+window.toggleLeaderboard = toggleLeaderboard;
+window.showLeaderboardPanel = showLeaderboardPanel;
+*/
 
 function normalizeISO3(value) {
     if (value === undefined || value === null) return null;
@@ -972,3 +984,4 @@ async function loadNewGame() {
 }
 
 window.addEventListener('load', initGlobe);
+} // Fin del bloque de protección contra carga duplicada
